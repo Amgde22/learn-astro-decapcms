@@ -1,0 +1,20 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "price": 30000,
+  "offer": 35000,
+  "description": "- Processeur Intel Core i5 de 12e génération pour des performances rapides\n- 16 Go de RAM DDR4 pour un multitâche fluide\n- SSD NVMe de 1 To pour un chargement et un stockage rapides\n- Ordinateur de bureau puissant pour le jeu, la productivité et le divertissement",
+  "name": "Acer Aspire TC-895-UA92",
+  "images": [
+    {
+      "image": "src/assets/images/products/image-2.jpg"
+    },
+    {
+      "image": "src/assets/images/products/image-3.jpg"
+    }
+  ],
+  "image": "src/assets/images/products/image1.jpg",
+  "tags": [
+    "ordinateur portable",
+    "gaming"
+  ]
+}
