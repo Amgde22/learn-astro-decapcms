@@ -1,8 +1,8 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "name": "Asus",
-  "description": "x",
-  "price": 0,
+  "name": "ASUS Vivobook 15 X571",
+  "description": "Processor: AMD A6-7310 APU 2.00 GHz\nRAM: 8GB DDR3\nGraphics: AMD Radeon R5 M320\nStorage: SSD 128GB\nScreen: 17.3\" HD",
+  "price": 125000,
   "image": "src/assets/images/products/img_20250417_141739.jpg",
   "images": [
     {
@@ -23,5 +23,8 @@
     {
       "image": "src/assets/images/products/img20250417140417.jpg"
     }
+  ],
+  "tags": [
+    "ordinateur portable"
   ]
 }
