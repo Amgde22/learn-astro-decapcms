@@ -3,5 +3,25 @@
   "name": "Asus",
   "description": "x",
   "price": 0,
-  "image": "src/assets/images/products/img_20250417_141739.jpg"
+  "image": "src/assets/images/products/img_20250417_141739.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/img_20250417_141846.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img_20250417_141854.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140107.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140218.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140242.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140417.jpg"
+    }
+  ]
 }
