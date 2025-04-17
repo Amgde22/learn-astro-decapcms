@@ -19,6 +19,9 @@
     }
   ],
   "price": 2,
-  "description": "2",
-  "name": "2"
+  "description": "Un mini-PC professionnel compact de Lenovo. \nType de machine : 10MQ\nNuméro de modèle : SOKLOO\nNuméro de série : PCOSLMFA\nDate de fabrication : Janvier 2018",
+  "name": "Lenovo ThinkCentre M710q",
+  "tags": [
+    "ordinateur de bureau"
+  ]
 }
