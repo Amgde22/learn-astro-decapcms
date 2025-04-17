@@ -1,0 +1,30 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "name": "ASUS Vivobook 15 X571",
+  "description": "Processeur : AMD A6-7310 APU 2.00 GHz\nRAM : 8 Go DDR3\nCarte graphique : AMD Radeon R5 M320\nStockage : SSD 128 Go\nÉcran : 17.3\" HD",
+  "price": 125000,
+  "image": "src/assets/images/products/img_20250417_141739.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/img_20250417_141846.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img_20250417_141854.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140107.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140218.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140242.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417140417.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur portable"
+  ]
+}
