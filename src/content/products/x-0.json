@@ -1,24 +1,17 @@
 {
-  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
   "name": "x",
   "description": "x",
   "price": 0,
-  "image": "https://i.postimg.cc/hhWsxhsM/IMG-20250417-143246.jpg",
+  "image": "src/assets/images/products/img20250417145034.jpg",
   "images": [
     {
-      "image": "https://i.postimg.cc/qMVW27z9/IMG-20250417-143306.jpg"
+      "image": "src/assets/images/products/img20250417145812.jpg"
     },
     {
-      "image": "https://i.postimg.cc/MHb57qLS/IMG-20250417-143540.jpg"
+      "image": "src/assets/images/products/img20250417145044.jpg"
     },
     {
-      "image": "https://i.postimg.cc/FR086t6P/IMG-20250417-144504.jpg"
-    },
-    {
-      "image": "https://i.postimg.cc/FR086t6P/IMG-20250417-144504.jpg"
-    },
-    {
-      "image": "https://i.postimg.cc/kGzSRZJm/IMG-20250417-144515.jpg"
+      "image": "src/assets/images/products/img20250417145842.jpg"
     }
   ]
 }
