@@ -1,0 +1,16 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "name": "Unité GAMER",
+  "description": "Processeur: 8th core i7-8700K 2,90Ghz\nRAM: 16G0 DDR4\nCarte Mère: MSI Z370 SLI PLUS\nCarte Graphique: RTX3060 GHOST OC 12GB 192bit 3-DP HDMI\nStockage: NVME 256G0\nAlimentation: GAMEMAX 700W\nBoîtier: BOITIER VENTILO RGE\nWifi: tp link wifi TL-wn881nd\nVentilateur: VENTILO MAGMA",
+  "price": 125000,
+  "image": "src/assets/images/products/img20250417151908.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/img20250417152004.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur de bureau",
+    "gaming"
+  ]
+}
