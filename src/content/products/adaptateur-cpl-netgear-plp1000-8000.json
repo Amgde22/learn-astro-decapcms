@@ -1,0 +1,25 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "image": "src/assets/images/products/img20250417155315.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/img20250417155358.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417155347.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417155411.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417155320.jpg"
+    }
+  ],
+  "tags": [
+    "Réseau",
+    "accessoires"
+  ],
+  "name": "Adaptateur CPL NETGEAR PLP1000",
+  "description": "Adaptateur CPL (Courant Porteur en Ligne) pour étendre la connexion Internet via le réseau électrique.\n- Débit jusqu'à 1000 Mbit/s\n- Prise électrique intégrée avec filtrage d'interférences\n- Port Ethernet Gigabit\n- Portée jusqu'à 500 m²\n- Technologie \"Push-and-Secure\" pour la sécurité\n- nstallation facile (Plug-and-Play)",
+  "price": 8000
+}

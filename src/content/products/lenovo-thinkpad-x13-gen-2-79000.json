@@ -1,0 +1,22 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "name": "Lenovo ThinkPad X13 Gen 2",
+  "image": "src/assets/images/products/img20250417161200.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/img20250417161210.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417161219.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img20250417161231.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur portable"
+  ],
+  "description": "Ultrabook professionnel compact et performant : \nCaractéristiques:\nProcesseur: Intel Core i5-1145G7 2.60 GHz (11ème génération)\nRAM: 16 Go DDR4\nCarte Graphique: Intel Iris Xe Graphics\nStockage: SSD 256 Go PCIEG4\nÉcran: 13\" FHD\nConnectivité: WIFI 6, ports Thunderbolt™ 4, nano SIM",
+  "price": 79000,
+  "offer": 85000
+}
