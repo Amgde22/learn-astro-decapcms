@@ -10,14 +10,26 @@
              --track-width: 5px;"></sl-spinner>
         </div>
 
-    <img 
-    v-else
-    loading="lazy"
-      :src="mainImageSrc" 
-      :alt="name + ' image'" 
-      class="product-image"
-      @error="handleImageError" 
-    /> 
+        <div
+          v-else
+          class="product-image-container">
+          <img 
+            loading="lazy"
+              :src="mainImageSrc" 
+              :alt="name + ' image'" 
+              class="product-image"
+              @error="handleImageError" 
+            /> 
+            <img 
+              loading="lazy"
+                :src="mainImageSrc" 
+                :alt="name + ' image'" 
+                class="product-image-background"
+                @error="handleImageError" 
+              /> 
+
+        </div>
+
 
     <p class="product-name">{{ name }}</p>
 
@@ -54,6 +66,7 @@
 
   <!-- dialog -->
   <dialog 
+    @close="unlock"
     ref="dialog" 
     :class="[
       'product-dialog',
@@ -72,57 +85,42 @@
       </button>
 
       <!-- product carousel -->
-      <sl-carousel 
-         mouse-dragging 
-         style="--aspect-ratio: 16/9;" 
-         ref="carousel"
-         class="carousel"
-         @sl-slide-change="handleSlideChange"
-         @click="openZoomModal"
-         >
-        <sl-carousel-item v-if="!hasCarouselImages">
+      <div class="carousel-container">
           <div 
-            v-if="isLoading"
+            v-if="!hasCarouselImages && isLoading"
             class="product-image" >
             <sl-spinner
               style="
               font-size: 3rem;
               --track-width: 5px;"></sl-spinner>
           </div>
-        </sl-carousel-item>
+          
+          <Slider 
+          v-else-if="true"
+          :name="name"
+          :carousel-images="carouselImages" />
 
-          <sl-carousel-item
-            v-else
-            v-for="(image, index) in carouselImages" :key="index"
-            class="carousel-product-image"
-             >
-            <img
-            loading="lazy"
-              :alt="`${name} - Image ${index + 1}`"
-              :src="image.src"
-              @error="(e) => handleCarouselImageError(e, index)"
-            />
-          </sl-carousel-item>
+          <Carousel
+          v-else
+          :name="name"
+          :carousel-images="carouselImages" />
 
-      </sl-carousel>
 
-        <div class="pagination-container">
-          <button
-          v-for="(image, index) in carouselImages" :key="index"
-          :class="['pagination-item',{active:slideIndex == index}]"
-            @click="goToSlide(index)"
-          ></button>
-        </div>
 
-      <!-- other stuff -->
+      </div>
+
+
+      <!-- product information-->
       <div class="dialog-product-informarion-container">
         <h3 class="dialog-product-name product-name">{{ name }}</h3>
         <p class="dialog-product-description custom-scrollbar "> 
-          {{ description }}
-
+          <slot name="description">
+            {{ description }}
+          </slot>
         </p>
 
-        <div class="bottom-section">
+
+        <div class="footer bottom-section">
           <span class="product-price">
             {{ formattedPrice }}
             <span class="product-offer-price">{{formattedPromotionPrice}}</span>
@@ -134,8 +132,8 @@
             <!-- whatsapp -->
             <a class="dialog-link whatsapp-icon-holder" :href="whatsappLink" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"  viewBox="0 0 48 48">
-<path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
-</svg>
+                <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
+                </svg>
             </a>
             <!-- location  -->
             <a class="dialog-link location-icon-holder" :href="googleMapsLink" target="_blank">
@@ -144,23 +142,14 @@
               </svg>
             </a>
           </div>
+
         </div>
       </div>
     </div>
 
   </dialog>
 
-     <!-- image zoom -->
-     <dialog 
-        ref="imageZoomModal" 
-        class="image-modal"
-        >
-        
-          <span @click="closeZoomModal()" class="close">&times;</span>
-          <div style="height: 100%;display: grid;place-items: center;">
-            <img class="image-modal-content" :src="visibleSlideImageSrc">
-          </div>
-      </dialog>
+
 
 
 </template>
@@ -172,14 +161,11 @@
 
 import { ref, computed, watch, onMounted, toValue } from 'vue';
 import { lock, unlock } from 'tua-body-scroll-lock'
-import '@shoelace-style/shoelace/dist/components/carousel/carousel.js';
-import '@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js';
-import '@shoelace-style/shoelace/dist/components/spinner/spinner.js'; // spinner
-import {playSwipeSound,getImageSrc} from "@/js/utils.js"
-// assets
 import placeHolderImage from "@assets/images/placeholder.jpg";
+// assets
 import data from "@data/client.json"
-
+import Carousel from "@components/productCardMiniComponents/Carousel.vue"
+import Slider from "@components/productCardMiniComponents/Slider.vue"
 
 const googleMapsLink = data.address.mapLink
 /* ==========================================================================
@@ -195,6 +181,10 @@ const props = defineProps({
   productImages: {
     type: Object,
     default: () => ({})
+  },
+  slider:{
+    type:Boolean,
+    required:false
   }
 });
 
@@ -208,12 +198,12 @@ const isLoading = ref(!props.productImages?.image?.src);
 const hasImageError = ref(false);
 const fallbackImageSrc = placeHolderImage.src;
 const mainImageSrc = ref(placeHolderImage.src);
-const carouselImages = ref([]);
 const isFallbackImage = ref(false);
+const carouselImages = ref([]);
 
 
 
-const { name, description, price, offer: offerPrice , tags:optionalProductTags, images: additionalImages } = props.product?.data || {};
+const { name, description, price, offer: offerPrice , tags:optionalProductTags, images: additionalImages ,os:operating_system } = props.product?.data || {};
 
 /* ==========================================================================
    Computed Properties
@@ -360,7 +350,6 @@ function handleCarouselImageError(event, index) {
 const openDialog = () => {
   dialog.value.showModal();
   modalVisible.value = true;
-  goToSlide(0)
   lock(dialog.value)
 };
 
@@ -375,49 +364,7 @@ const closeDialog = () => {
 
 };
 
-// carousel
-const carousel = ref(null)
 
-
-// Export the play function (if needed for use in other modules)
-
-function goToSlide(index) {
-  playSwipeSound()
-  carousel.value.goToSlide(index)
-}
-// image zoom
-const imageZoomModal = ref(null)
-
-
-const slideIndex = ref(0)
-const visibleSlideImageSrc = computed(()=>{
-  const index = slideIndex.value ?? 0
-  const images = props.product.data.images 
-  ? [getImageSrc(props.product.data.image), ...props.product.data.images.map(entry => getImageSrc(entry.image))]
-  : [getImageSrc(props.product.data.image)];
-  // console.log(props.productImages);
-  // first log {}
-  // second log image: { src: 'https://m.media-amazon.com/images/I/61Mk3YqYHpL.jpg' }
-  const visibleImageSrc = images[index]
-
-  if (visibleImageSrc) {
-    return visibleImageSrc
-  }
-
-  else{
-    return fallbackImageSrc
-  }
-})
-function handleSlideChange(event) {
-  slideIndex.value = event.detail.index
-}
-
-function openZoomModal() {
-  imageZoomModal.value.showModal()
-}
-function closeZoomModal() {
-  imageZoomModal.value.close()
-}
 
 /* ==========================================================================
    Watchers
@@ -479,31 +426,55 @@ onMounted(() => {
   max-height: 450px;
   cursor: pointer;
 }
-
-.product-image {
-  width: 100%;
-  height: auto;
+.product-image-container{
+  position: relative;
   max-height: 200px;
   border-radius: @border-radius;
+  aspect-ratio: 16/9; //Maintain the aspect ratio
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 16px;
+
+.product-image-background {
+  position: absolute;
+  top: 0;left: 0;
+  display: block;
+  // border: 1px solid red;
+  z-index: -1;
+  width: 100%;height: 100%;
+  object-fit: cover; // Cover the container area
+  filter: blur(10px); // Apply blur (adjust px as needed)
+  transform: scale(1.1); // Slightly scale up to avoid blurred edges showing artifacts
+  z-index: -1; // Ensure it's behind the main image
+
+  // display: none;
+
+}
+
+
+}
+.product-image {
+  height: 100%;
+  display: block;
+  margin: auto;
   margin-bottom: 0.75rem;
   object-fit: contain; // Ensure image fills container without distortion
-  aspect-ratio: 16/9; //Maintain the aspect ratio
-
-  display: grid;
-  place-items: center;
+  z-index: 1;
 }
+
 
 .product-name {
   color: var(--headerColor);
   text-transform: capitalize;
   font-weight:bold;
   font-size: 1.25em;
+  margin-bottom: auto;
+
 }
 .product-tags{
   display: flex;
-  margin-top: 4px;
-  margin-bottom: 8px;
-  gap: 4px;
+  margin-bottom: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 
   & .tag{
@@ -567,7 +538,17 @@ onMounted(() => {
   margin-top: auto;
 }
 
+/* ==========================================================================
+   Carousel Styles (.carousel)
+   ========================================================================== */
 
+   .carousel-container{
+    padding-top: 16px;
+    padding-bottom: 12px;
+    background-color: rgba(0, 0, 0, 0.148);
+
+    max-height: 300px;
+   }
 
 /* ==========================================================================
    Product Dialog Styles (.product-dialog)
@@ -617,7 +598,6 @@ onMounted(() => {
   position: relative;
   overflow-y: auto;
   margin: auto;
-  padding-top: 12px;
   display: flex;
   flex-direction: column;
 
@@ -758,50 +738,7 @@ onMounted(() => {
   }
 
 
-/* ==========================================================================
-   Carousel Styles (.carousel)
-   ========================================================================== */
 
-.carousel {
-  position: relative;
-  z-index: 1;
-
-  & img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-  }
-
-  // &::part(pagination-item),.pagination-item {
-  //   --size: 14px;
-  //   width: var(--size);
-  //   height: var(--size);
-  // }
-
-  // &::part(pagination-item--active),.pagination-item {
-  //   background-color: var(--medium);
-  // }
-}
-.pagination-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-.pagination-item {
-    --size: 16px;
-    width: var(--size);
-    height: var(--size);
-    border: none;
-    border-radius: 100%;
-    background-color: rgb(161, 161, 161);
-    &:hover{
-      opacity: 0.85;
-    }
-  }
-  .pagination-item.active {
-    background-color: var(--medium);
-  }
 /* ==========================================================================
    Dark Mode Styles (body.dark-mode)
    ========================================================================== */
@@ -810,35 +747,27 @@ onMounted(() => {
   body.dark-mode {
     .product-card,
     .dialog-content {
-      background-color: var(--medium);
-      border: 3px solid var(--dark);
+      background-color: var(--color-primary-700);
+      box-shadow: none;
+
     } 
 
     .product-tags .tag{
-      background-color: white;
-      color:var(--medium) ;
+      background-color: var(--sl-color-neutral-500);
+      color:#eee ;
       
     }
-    .product-price {
-      color: white;
+    .product-price,.icon {
+      color:#eee ;
+
     }
 
-    .icon {
-      color: white;
-    }
 
     .dialog-product-description {
       border-top: 4px solid rgba(255, 255, 255, 0.489);
     }
 
-    .pagination-item {
-      background-color: var(--dark);
-    }
 
-    .pagination-item.active {
-      background-color: rgb(213, 213, 213) !important; 
-
-    }
 
 
     .location-icon-holder{
@@ -859,82 +788,8 @@ onMounted(() => {
 }
 
 
-// image zoom
-/* The Modal (background) */
-.image-modal {
 
-  margin: 0;
-  border: none;
-
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  inset: 0 !important;
-  width: 100%; /* Full width */
-  max-width: none;
-  height: 100%; /* Full height */
-  max-height: none;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-
-
-}
-
-/* Modal Content (image) */
-.image-modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-}
-
-
-/* Add Animation */
-.image-modal-content {  
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 200ms;
-  animation-name: zoom;
-  animation-duration: 200ms;
-  animation-timing-function: ease-out;
-}
-
-@-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
-}
-@keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .image-modal-content {
-    width: 100%;
-    max-width: none;
-    max-height: none;
-  }
-}
 
 </style>
-
-
 
 
