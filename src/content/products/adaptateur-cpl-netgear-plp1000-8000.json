@@ -1,10 +1,7 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "image": "src/assets/images/products/img20250417155315.jpg",
+  "image": "src/assets/images/products/img20250417155358.jpg",
   "images": [
-    {
-      "image": "src/assets/images/products/img20250417155358.jpg"
-    },
     {
       "image": "src/assets/images/products/img20250417155347.jpg"
     },
