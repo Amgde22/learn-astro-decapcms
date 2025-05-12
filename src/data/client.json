@@ -2,8 +2,10 @@
 	"name": "Info Pc Sba",
 	"email": "tester.infopc@gmail.com",
 	"whatsappLink":"https://wa.me/213770662425",
+
 	"phoneForTel": "0770662425",
 	"phoneFormatted": "0770662425",
+	"phoneForTel2":"0560863370",
 	"address": {
 		"lineOne": "N 50c Cite 345 Lgt",
 		"lineTwo": "Al-wiam Sidi Jilali",
@@ -12,5 +14,5 @@
 		"zip": "",
 		"mapLink": "https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5"
 	},
-	"domain": "www.infopcsba.com"
+	"domain": "www.infopc.netlify.com"
 }
