@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
-Sitemap: https://<YOUR SITE>/sitemap-index.xml
+Sitemap: https://infopc.netlify.app//sitemap-index.xml
