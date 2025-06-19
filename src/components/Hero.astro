@@ -112,7 +112,7 @@ const {mapLink} = address
     </div>
 
     <!-- Background Image, there's a background image in the CSS for the parallax effect you'll need to change as well if you swap out our images -->
-    <picture class="cs-background">
+    <picture class="cs-background" tabindex="-1">
         <source media="(max-width: 600px)" srcset={heroImage.src}>
         <source media="(min-width: 601px)" srcset={heroImage.src}>
         <img decoding="async" src={heroImage.src} alt="Cover picture" width="2250" height="1500" aria-hidden="true">
@@ -340,6 +340,8 @@ const {mapLink} = address
                 z-index: 1;
                 /* prevents the cursor from interacting with it */
                 pointer-events: none;
+                user-drag: none;   
+                -webkit-user-drag: none;   
             }
             
             img {
@@ -351,6 +353,10 @@ const {mapLink} = address
                 object-fit: cover;
                 /* makes the top of the image start at the top of the parent */
                 object-position: top;
+                /* prevents the cursor from interacting with it */
+                pointer-events: none;
+                user-drag: none;   
+                -webkit-user-drag: none;   
             }
         }
     }
