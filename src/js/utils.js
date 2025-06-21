@@ -32,7 +32,6 @@ export async function getOptimizedCardImage(image) {
   
   const optimizedImage = await getImage({
     src: image,
-    width:350,
     format: "webp",
   });
 
