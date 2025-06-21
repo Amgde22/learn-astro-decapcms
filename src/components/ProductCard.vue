@@ -738,6 +738,14 @@ onMounted(() => {
   }
 
 
+@media only screen and (min-width: 740px) {
+  .dialog-product-name{
+    font-size:1.6em ;
+    .dialog-product-description{
+      font-size: 1.2em;
+    }
+  }
+}
 
 /* ==========================================================================
    Dark Mode Styles (body.dark-mode)
@@ -753,7 +761,7 @@ onMounted(() => {
     } 
 
     .product-tags .tag{
-      background-color: var(--sl-color-neutral-500);
+      background-color: var(--sl-color-sky-600);
       color:#eee ;
       
     }
