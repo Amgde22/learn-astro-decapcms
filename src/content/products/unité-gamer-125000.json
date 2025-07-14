@@ -1,12 +1,15 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "name": "Unité GAMER",
-  "description": "- Processeur: 8th core i7-8700K 2,90Ghz\n- RAM: 16G0 DDR4\n- Carte Mère: MSI Z370 SLI PLUS\n- Carte Graphique: RTX3060 GHOST OC 12GB 192bit 3-DP HDMI\n- Stockage: NVME 256G0\n- Alimentation: GAMEMAX 700W\n- Boîtier: BOITIER VENTILO RGE\n- Wifi: tp link wifi TL-wn881nd\n- Ventilateur: VENTILO MAGMA",
-  "price": 125000,
-  "image": "src/assets/images/products/img20250417151908.jpg",
+  "name": "Unité GAMER RTX 4060",
+  "description": "- Processeur : RYZEN 5 5600X 4.6Ghz 6C/12T 35MO\n- RAM : 32GO DDR4 2X16GO CUSU\n- Carte Mère : ASUS PRIME A520M-K AM4\n- Carte Graphique : GALAX RTX3060 8GB 1-CLICK OC 2X V2\n- Stockage : SSD VERBATIM 512GB VI550 S3 SATA\n- Alimentation : THERMALETAKE 650WATTS \n- Boîtier : BOITIER AURA CS5 ARGB\n- Ventilateur : VENTILO AMD",
+  "price": 152000,
+  "image": "src/assets/images/products/img_20250713_202727.jpg",
   "images": [
     {
       "image": "src/assets/images/products/img20250417152004.jpg"
+    },
+    {
+      "image": "src/assets/images/products/img_20250713_201642.jpg"
     }
   ],
   "tags": [
