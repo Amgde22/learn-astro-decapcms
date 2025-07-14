@@ -1,0 +1,18 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "name": "Dell VOSTRO 3520 ",
+  "description": "- Processeur : I7-1255U 1.70Ghz\n- GPU : Intel Irix Xe\n- Ram : 16 GB 3200Mhz\n- Stockage :  512 GB Nvme M.2",
+  "price": 10500,
+  "image": "src/assets/images/products/picsart_25-07-14_18-01-03-991.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_18-00-35-909.jpg"
+    },
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_18-01-34-914.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur portable"
+  ]
+}
