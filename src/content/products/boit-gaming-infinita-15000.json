@@ -1,0 +1,18 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "image": "src/assets/images/products/picsart_25-07-14_17-25-07-254.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_17-27-05-453.jpg"
+    },
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_18-15-25-743.jpg"
+    }
+  ],
+  "name": "Boit Gaming INFINITA",
+  "description": "Boit : INFINITA i610 WOOD",
+  "price": 15000,
+  "tags": [
+    "gaming"
+  ]
+}
