@@ -8,5 +8,8 @@
   ],
   "name": "Casque Tt esports THERMALTAKE",
   "description": "Casque THERMALTAKE H100 Professional Gaming headset",
-  "price": 5500
+  "price": 5500,
+  "tags": [
+    "audio"
+  ]
 }
