@@ -1,0 +1,15 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "image": "src/assets/images/products/picsart_25-07-14_17-27-33-347.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_17-28-55-131.jpg"
+    }
+  ],
+  "name": "Ecran COOLER MASTER GA2501",
+  "description": "- Size : 24.5 inch FHD\n- FREQUENCY : 100Hz\n- Ecran Gaming",
+  "price": 21000,
+  "tags": [
+    "écrans"
+  ]
+}
