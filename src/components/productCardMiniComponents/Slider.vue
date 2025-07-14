@@ -18,12 +18,13 @@
         class="gallery-track"
       >
         <!-- Display all processed images -->
-        <div
-          v-for="(image, index) in processedImages"
-          :key="image.key || index"
-          class="gallery-item"
-          @click="!isDragging && distanceDragged < 10 ? openZoomModal(image.src) : null"
-        >
+      <div
+        v-for="(image, index) in processedImages"
+        :key="image.key || index"
+        class="gallery-item"
+        @click="handleImageClick(image.src)"
+        @touchend="handleImageClick(image.src)"
+      >
           <img
             loading="lazy"
             draggable="false"
@@ -129,7 +130,10 @@ function onDragEnd() {
   // console.log("Drag End");
   // No index change or snapping logic needed here. Scrolling stops.
 }
-
+function handleImageClick(src) {
+  if (isDragging.value || distanceDragged.value > 10) return;
+  openZoomModal(src);
+}
 // --- Image Zoom ---
 // Accepts the src directly now
 function openZoomModal(imageSrc) {

@@ -40,4 +40,4 @@ collections:
         required: false
         fields:
           - { label: "Image", name: "image", widget: "image" }
-      - { label: "🔹❓Tags", name: "tags", widget: "select", multiple: true, options: ["ordinateur de bureau", "ordinateur portable", "gaming", "audio", "souris", "clavier", "câbles", "accessoires", "écrans","Réseau"], required: false, hint: "Sélectionner les tags pour catégoriser les produits" } # Tags with auto-complete
+      - { label: "🔹❓Tags", name: "tags", widget: "select", multiple: true, options: ["ordinateur de bureau", "ordinateur portable", "gaming", "audio", "souris", "clavier", "câbles", "accessoires", "écrans","Réseau","stockage","ventilo"], required: false, hint: "Sélectionner les tags pour catégoriser les produits" } # Tags with auto-complete

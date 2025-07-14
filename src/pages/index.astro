@@ -13,7 +13,8 @@ import '@shoelace-style/shoelace/dist/components/button/button.js';
 
 const optimizedImage = await getOptimizedImage(landingImage)
 
-const products = await getCollection("products");
+const products = await getCollection("products").then(productArray=>productArray.reverse())
+
 const productsProcessedImages = await processProductImages(products)
 
 //  product </ kayn

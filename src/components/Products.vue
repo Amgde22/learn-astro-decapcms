@@ -75,16 +75,16 @@
 
         // less than 550px
         if (screenWidth <= breakPoint1) {
-            return products.slice(0, 3);
+            return products.slice(0, 6);
         }
         // less than 800px
         else if(screenWidth <= breakPoint2){
             // display the first r on pc
-            return products.slice(0, 4);
+            return products.slice(0, 8);
         }
-        // moew than 800px
+        // more than 800px
         else{
-            return products.slice(0, 6);
+            return products.slice(0, 12);
 
         }
     })
