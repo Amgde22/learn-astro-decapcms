@@ -3,5 +3,8 @@
   "name": "Point d’accès Tenda AX3000 TX12L Pro",
   "description": "Point d’accès Tenda AX3000 TX12L Pro\nSupport WI-FI 6\n",
   "price": 10900,
-  "image": "src/assets/images/products/picsart_25-07-14_17-39-49-684.jpg"
+  "image": "src/assets/images/products/picsart_25-07-14_17-39-49-684.jpg",
+  "tags": [
+    "Réseau"
+  ]
 }
