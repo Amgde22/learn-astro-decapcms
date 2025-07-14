@@ -1,0 +1,12 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "image": "src/assets/images/products/picsart_25-07-14_17-30-12-095.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_17-29-41-049.jpg"
+    }
+  ],
+  "name": "Casque Tt esports THERMALTAKE",
+  "description": "Casque THERMALTAKE H100 Professional Gaming headset",
+  "price": 5500
+}
