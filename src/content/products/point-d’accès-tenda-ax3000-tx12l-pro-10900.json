@@ -1,7 +1,7 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
   "name": "Point d’accès Tenda AX3000 TX12L Pro",
-  "description": "Point d’accès Tenda AX3000 TX12L Pro\nSupport WI-FI 6\n",
+  "description": "🔹 Point d’accès Tenda AX3000 TX12L Pro :\n🔹 Wi-Fi 6 (802.11ax) – vitesses plus rapides, plus stables et plus efficaces\n🔹 Vitesse totale : jusqu'à 3000 Mbps (2.4GHz: 574 Mbps, 5GHz: 2402 Mbps)\n🔹 Technologie MU-MIMO – gestion simultanée de plusieurs appareils pour une meilleure performance\n🔹 8 antennes externes – couverture étendue et signal puissant\n🔹 Prise en charge de la technologie OFDMA – améliore la capacité et réduit la latence dans les réseaux très sollicités\n🔹 Sécurité WPA3 – protection avancée contre les cyber-menaces\n🔹 Port Gigabit Ethernet – pour une connexion câblée rapide et stable\n🔹 Design moderne – compact et adapté aux environnements domestiques ou professionnels\n\n\n",
   "price": 10900,
   "image": "src/assets/images/products/picsart_25-07-14_17-39-49-684.jpg",
   "tags": [
