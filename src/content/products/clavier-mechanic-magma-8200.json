@@ -1,0 +1,15 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "image": "src/assets/images/products/picsart_25-07-14_17-38-52-166.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_17-36-26-584.jpg"
+    }
+  ],
+  "name": "Clavier Mechanic MAGMA",
+  "description": "- Clavier Mechanic Fiora F61 CT\n- SUPPORT : WI-FI - BLUETOOTH - CABLE TYPE-C\n- SWITCH : Blanc - White",
+  "price": 8200,
+  "tags": [
+    "clavier"
+  ]
+}
