@@ -8,5 +8,8 @@
   ],
   "name": "RTX 4060 Galax OC",
   "description": "- RTX 4060 GALAX OC\n- VRAM : 8GB GDDR7\n- PORT : HDMI - DISPLAY PORT\n",
-  "price": 77500
+  "price": 77500,
+  "tags": [
+    "gaming"
+  ]
 }
