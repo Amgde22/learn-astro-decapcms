@@ -2,7 +2,7 @@
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
   "image": "src/assets/images/products/picsart_25-07-14_17-40-58-322.jpg",
   "name": "SSD Verbatim ",
-  "description": "- SSD 512GB VERBATIM : 7300DA\n- SSD 1TB VERBATIM : 12900DA\n",
+  "description": "🔹 SSD 512GB VERBATIM : 7300DA\n🔹 SSD 1TB VERBATIM : 12900DA\n🔹 Vitesse de lecture/écriture rapide – jusqu'à 550 Mo/s en lecture et 500 Mo/s en écriture\n🔹 Interface SATA III – compatible avec la plupart des systèmes et cartes mères\n🔹 Fiabilité accrue – conçu pour une longue durée de vie avec une faible consommation d'énergie\n🔹 Capacités disponibles – de 512 Go à 1 To pour répondre à différents besoins",
   "price": 7300,
   "tags": [
     "stockage"
