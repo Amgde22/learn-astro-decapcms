@@ -1,0 +1,15 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "name": "Alimentation 550W HYBROK 80 PLUS BRONZE",
+  "description": "Alimentation 550W HYBROK 80 PLUS Bronze\n",
+  "price": 7000,
+  "tags": [
+    "ordinateur de bureau"
+  ],
+  "image": "src/assets/images/products/picsart_25-07-14_19-30-20-387.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-14_17-40-21-835.jpg"
+    }
+  ]
+}
