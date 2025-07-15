@@ -2,7 +2,7 @@
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
   "name": "Unite GAMING Aura",
   "description": "- Procceseur : Ryzen 5 PRO 5655G 3.9 GHz-4.4 GHz\n- Cart Grafique : AMD Radeon  Vega 11\n- Ram : 16 GB 2666 Mhz CAPSYS\n- Cart mere : Biostar B450M\n- Ventilo : MAGMA \n- Stockage : TwinMOS 256 GB SSD \n- Alimentation : RaidMax  XTB 550W\n- Boit : AURA GC7",
-  "price": 67000,
+  "price": 65000,
   "image": "src/assets/images/products/picsart_25-07-14_21-55-31-605.jpg",
   "images": [
     {
@@ -15,5 +15,6 @@
   "tags": [
     "ordinateur de bureau",
     "gaming"
-  ]
+  ],
+  "offer": 67000
 }
