@@ -1,5 +1,5 @@
 {
-  "name": "ZOTAC Mini PC 69000 DA",
+  "name": "ZOTAC Mini PC.",
   "description": "Processeur: Intel Core i7-10700 2.90Ghz (10ème génération)\nRAM: 16Go DDR4\nCarte Graphique: Intel® UHD Graphics 630\nStockage: SSD SAMSUNG 256Go\nAlimentation: 500W 80+ Platinum\nConnectivité: Killer WiFi-6, Gigabit et 2.5Gbps Ethernet, 4 x USB 3.1 GEN2, 4 x USB 3.0 (1 Type-C)",
   "price": 69000,
   "image": "src/assets/images/products/picsart_25-07-14_21-21-59-961.jpg",
@@ -14,5 +14,6 @@
   "offer": 70000,
   "tags": [
     "ordinateur de bureau"
-  ]
+  ],
+  "in_stock": "true"
 }
