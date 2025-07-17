@@ -22,6 +22,11 @@ const productsCollection = defineCollection({
         )
         .optional(),
       tags: z.union([z.array(z.any()), z.null()]).optional(),
+      in_stock: z
+      .enum(["true", "false"]) // Expect one of these two strings
+      .transform((val) => val === 'true') // Convert the string "true" to the boolean true
+      .optional()
+      .default('true'), // The default value from the CMS is the string 'true'
     }),
 });
 

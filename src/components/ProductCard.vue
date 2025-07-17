@@ -1,5 +1,10 @@
 <template>
   <div class="product-card" @click="openDialog">
+    <!-- In Stock Pill for Card - Absolute Positioned -->
+    <span class="in-stock-pill in-stock-pill--card" :class="stockStatus.class" v-if="stockStatus">
+      {{ stockStatus.text }}
+    </span>
+
     <!-- Show loading state or placeholder while image loads -->
     <div 
     v-if="isLoading"
@@ -113,6 +118,9 @@
       <!-- product information-->
       <div class="dialog-product-informarion-container">
         <h3 class="dialog-product-name product-name">{{ name }}</h3>
+        <span class="in-stock-pill in-stock-pill--modal" :class="stockStatus.class" v-if="stockStatus">
+          {{ stockStatus.text }}
+        </span>
         <p class="dialog-product-description custom-scrollbar "> 
           <slot name="description">
             {{ description }}
@@ -203,7 +211,7 @@ const carouselImages = ref([]);
 
 
 
-const { name, description, price, offer: offerPrice , tags:optionalProductTags, images: additionalImages ,os:operating_system } = props.product?.data || {};
+const { name, description, price, offer: offerPrice , tags:optionalProductTags, images: additionalImages ,   in_stock } = props.product?.data || {};
 
 /* ==========================================================================
    Computed Properties
@@ -257,7 +265,14 @@ const formattedPromotionPrice = computed(() => {
   return formatCurrency(offerPrice) || "";
 });
 
-
+const stockStatus = computed(() => {
+  if (in_stock === true) {
+    return { text: 'En stock', class: 'in-stock-pill--in' };
+  } else if (in_stock === false) {
+    return { text: 'Hors stock', class: 'in-stock-pill--out' };
+  }
+  return null; // Or a default status if needed
+});
 
 
 
@@ -404,6 +419,12 @@ onMounted(() => {
 @golden-color: #ffc107;
 @text-color: #333;
 
+// Define success and danger colors (example, ensure these are globally defined in your project or adjusted here)
+:root {
+  --success: #28a745; /* Green */
+  --danger: #dc3545;  /* Red */
+}
+
 
 /* ==========================================================================
    Product Card Styles (.product-card)
@@ -425,6 +446,8 @@ onMounted(() => {
   height: 100%;
   max-height: 450px;
   cursor: pointer;
+
+  position: relative; /* Crucial for absolute positioning of .in-stock-pill--card */
 }
 .product-image-container{
   position: relative;
@@ -537,6 +560,50 @@ onMounted(() => {
 .bottom-section {
   margin-top: auto;
 }
+
+/* ==========================================================================
+   In Stock Pill Styles
+   ========================================================================== */
+.in-stock-pill {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.in-stock-pill--in {
+  background-color: var(--success);
+  color: white;
+}
+
+.in-stock-pill--out {
+  background-color: var(--danger);
+  color: white;
+}
+
+/* Card specific sizing and positioning */
+.in-stock-pill--card {
+  position: absolute;
+  top: 10px; /* Adjust as needed for padding from top */
+  left: 10px; /* Adjust as needed for padding from left */
+  font-size: 1.1em; /* Same size as .tag */
+  padding: 0.2em 1.25em; /* Same padding as .tag */
+  z-index: 10; /* Ensure it's above other card content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: add a subtle shadow for prominence */
+}
+
+/* Modal specific sizing and positioning */
+.in-stock-pill--modal {
+  font-size: 1em; /* Medium size */
+  padding: 0.3em 0.8em; /* Include padding in size consideration */
+  margin-top: 4px; /* Reduced spacing from the name */
+  margin-bottom: 8px; /* Spacing below the pill */
+  align-self: flex-start; /* Align to the start of the container */
+}
+
 
 /* ==========================================================================
    Carousel Styles (.carousel)
@@ -791,6 +858,16 @@ onMounted(() => {
       box-shadow: none;
       background-color: var(--medium);
     }
+    /* Dark mode for in-stock pill colors (if not handled by global --success/--danger) */
+    .in-stock-pill--in {
+      background-color: var(--success); /* Ensure this is a dark mode appropriate green */
+      color: white;
+    }
+
+    .in-stock-pill--out {
+      background-color: var(--danger); /* Ensure this is a dark mode appropriate red */
+      color: white;
+    }
 
   }
 }
@@ -799,5 +876,3 @@ onMounted(() => {
 
 
 </style>
-
-

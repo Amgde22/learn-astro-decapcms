@@ -13,7 +13,13 @@ import '@shoelace-style/shoelace/dist/components/button/button.js';
 
 const optimizedImage = await getOptimizedImage(landingImage)
 
-const products = await getCollection("products").then(productArray=>productArray.reverse())
+const products = await getCollection("products")
+.then(productArray => 
+  productArray.sort((a, b) => {
+    // This uses the file's internal creation order, but it's not guaranteed
+    return productArray.indexOf(b) - productArray.indexOf(a)
+  })
+)
 
 const productsProcessedImages = await processProductImages(products)
 

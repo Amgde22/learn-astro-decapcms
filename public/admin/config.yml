@@ -1,4 +1,3 @@
-
 # See full Decap documentation for further configuration: https://decapcms.org/docs/intro/
 backend:
   name: git-gateway
@@ -40,4 +39,12 @@ collections:
         required: false
         fields:
           - { label: "Image", name: "image", widget: "image" }
-      - { label: "🔹❓Tags", name: "tags", widget: "select", multiple: true, options: ["ordinateur de bureau", "ordinateur portable", "gaming", "audio", "souris", "clavier", "câbles", "accessoires", "écrans","réseau","stockage","ventilo","Carte Graphique","alimentation","RAM","processeur",], required: false, hint: "Sélectionner les tags pour catégoriser les produits" } # Tags with auto-complete
+      - { label: "🔹❓Tags", name: "tags", widget: "select", multiple: true, options: ["ordinateur de bureau", "ordinateur portable", "gaming", "audio", "souris", "clavier", "câbles", "accessoires", "écrans","réseau","stockage","ventilo","Carte Graphique","alimentation","RAM","processeur",], required: false, hint: "Sélectionner les tags pour catégoriser les produits" }
+      - label: "❓ Statut de stock"
+        name: "in_stock" 
+        widget: "select"
+        options:
+          - { label: "En stock", value: "true" } 
+          - { label: "Hors stock", value: "false" } 
+        default: "true"   
+        hint: "Sélectionner si le produit est en stock ou non."
