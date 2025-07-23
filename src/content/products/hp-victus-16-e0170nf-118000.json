@@ -1,0 +1,20 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "in_stock": "true",
+  "name": "HP Victus 16-e0170nf ",
+  "description": "HP Victus 16-e0170nf :\n\nCPU: AMD Ryzen 5 5600H (6 cores, up to 4.1 GHz)\n\nGPU: AMD Radeon RX 5500M (4 GB VRAM)\n\nDisplay: 16.1″ Full HD (1920×1080), IPS, 60Hz\n\nRAM: 16 GB DDR4 (3200 MHz, upgradable to 64 GB)\n\nStorage: 512 GB SSD (NVMe M.2)\n\nPorts: USB-C, 3× USB-A, HDMI, Ethernet, SD reader\n\nCamera: 720p HD with dual mics\n\nBattery: 4-cell ~70 Wh",
+  "price": 118000,
+  "image": "src/assets/images/products/picsart_25-07-23_10-45-22-895.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-23_10-45-38-660.jpg"
+    },
+    {
+      "image": "src/assets/images/products/picsart_25-07-23_11-51-49-756.jpg"
+    }
+  ],
+  "tags": [
+    "gaming",
+    "ordinateur portable"
+  ]
+}
