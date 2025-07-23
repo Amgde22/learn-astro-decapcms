@@ -1,0 +1,19 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "in_stock": "true",
+  "name": "Lenovo Ideapad 3 15itle6",
+  "description": "Cpu : Intel i5-1135g7 2.4Ghz\nGpu : Intel Iris Xe\nRam : 16 GB DDR4\nStockage : Nvme M.2 256GB \nEcran : 15.6 Inch FHD\n",
+  "price": 69000,
+  "image": "src/assets/images/products/picsart_25-07-23_10-44-05-639.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-23_10-44-59-432.jpg"
+    },
+    {
+      "image": "src/assets/images/products/picsart_25-07-23_10-44-38-287.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur portable"
+  ]
+}
