@@ -1,0 +1,17 @@
+{
+  "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
+  "in_stock": "true",
+  "name": "PC gaming RTX 2060",
+  "description": "Cpu : Intel core i7 9700F \nRam : 32GB DDR4 ADATA RGB 3000MHZ\nCarte mere: B365 Phantom Gaming 4\nPCI-Express \nStockage : SSD ADATA SU630 480GB SATA3\nBOITIER : HYDRA AURES RGB+TC\nGpu : MSI NVIDIA 2060 Super VENTUS 8GB OC\nALIMENTATION : AURES 500W\nVENTILAEUR : COOLER MASTER T 200",
+  "price": 118000,
+  "image": "src/assets/images/products/picsart_25-07-23_10-43-16-754.jpg",
+  "images": [
+    {
+      "image": "src/assets/images/products/picsart_25-07-23_10-43-42-387.jpg"
+    }
+  ],
+  "tags": [
+    "ordinateur de bureau",
+    "gaming"
+  ]
+}
