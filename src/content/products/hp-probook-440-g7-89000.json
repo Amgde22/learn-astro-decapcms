@@ -2,7 +2,7 @@
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
   "in_stock": "true",
   "name": "HP probook 440 G7",
-  "description": "\nHP ProBook 440 G7 :\nCpu : i7-10510U\nGpu : Intel UHD \nRam :16GB DDR4\nStockage : 512GB M.2\nÉcran : 14\" FHD (anti-reflets)\nRéseau : Wi-Fi 6, Bluetooth 5",
+  "description": "\nHP ProBook 440 G7 :\nCpu : i7-10510U\nGpu : Intel UHD \nRam :16GB DDR4\nStockage : 1TB M.2\nÉcran : 14\" FHD\nRéseau : Wi-Fi 6, Bluetooth 5",
   "price": 89000,
   "image": "src/assets/images/products/picsart_25-07-28_10-35-49-198.jpg",
   "images": [
