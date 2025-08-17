@@ -78,9 +78,16 @@ const {mapLink} = client.address
   </div>
 
   <div class="credit">
-
     <span class="copyright"> 
       © {currentYear} - Info PC SBA. Tous droits réservés.
+    </span>
+    <span class="design-credit">
+      Website by <a href="https://www.instagram.com/majd_studios/" target="_blank" rel="noopener">Majd Studios</a> (Manager)
+      <span class="contact-links">
+        <a href="https://wa.me/213556640229" target="_blank" rel="noopener">WhatsApp</a> | 
+        <a href="tel:0556640229">Call</a> | 
+        <a href="mailto:magidembarek@gmail.com">Email</a>
+      </span>
     </span>
   </div>
 </footer>
@@ -209,26 +216,42 @@ const {mapLink} = client.address
     }
 
     .credit {
-      font-size: (16/16rem);
-      line-height: (36/16rem);
+      font-size: (14/16rem);
+      line-height: (24/14rem);
       text-align: center;
       width: 96%;
       margin: auto;
-      margin-top: (100/16rem);
-      color: #fff;
+      margin-top: (50/16rem);
+      color: #aaa;
+      display: flex;
+      flex-direction: column;
+      gap: (8/14rem);
 
       a {
-        font-size: (16/16rem);
+        color: #ddd;
         text-decoration: none;
-        color: var(--primary);
+        transition: color 0.3s;
 
         &:hover {
-          text-decoration: underline;
+          color: var(--primary);
+        }
+      }
+
+      .design-credit {
+        display: flex;
+        flex-direction: column;
+        gap: (4/14rem);
+
+        .contact-links {
+          display: flex;
+          justify-content: center;
+          gap: (10/14rem);
+          font-size: (12/14rem);
         }
       }
 
       .copyright {
-        font-size: (16/16rem);
+        font-size: (14/14rem);
         display: block;
       }
     }
@@ -319,6 +342,22 @@ const {mapLink} = client.address
     }
 
     .credit {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: (80/16rem);
+
+      .design-credit {
+        flex-direction: row;
+        align-items: center;
+        gap: (15/14rem);
+
+        .contact-links {
+          flex-direction: row;
+          gap: (15/14rem);
+        }
+      }
+
       .copyright {
         display: inline-block;
       }
@@ -339,5 +378,4 @@ const {mapLink} = client.address
   filter: grayscale(1) brightness(1000%);
 
 }
-
 </style>
