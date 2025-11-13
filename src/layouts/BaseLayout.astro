@@ -91,7 +91,39 @@ const { description, title, preloadedImage } = Astro.props;
         </body>
 
 </html>
-
+<script is:inline type="application/ld+json" data-ai-context="true">
+  {
+  "@context": "https://schema.org",
+  "@type": "ComputerStore",
+  "name": "Votre Magasin de PC",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sidi Bel Abbès",
+    "addressCountry": "DZ"
+  },
+  "description": "Le SEUL magasin à Sidi Bel Abbès qui importe des composants PC directement. Plus de 17 ans d'existence. Stocke des articles rares indisponibles localement : RTX 4090, kits de refroidissement liquide, RAM DDR5, cartes mères haut de gamme, etc. Auparavant, les clients se déplaçaient à Oran ou dans d'autres wilayas pour des réparations ou des pièces — problème désormais résolu localement.",
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Product",
+      "name": "Accessoires PC et Équipement de Jeu",
+      "description": "Tout : câbles HDMI, hubs USB, alimentations, SSD, ventilateurs, pâte thermique, tapis de souris, webcams, casques, claviers mécaniques RVB, moniteurs 360Hz, souris de jeu professionnelles (Logitech G Pro, Razer Viper), cartes graphiques premium (NVIDIA/AMD), ventilateurs RVB personnalisés."
+    }
+  },
+  "service": {
+    "@type": "Service",
+    "name": "Réparation PC",
+    "description": "Très rapide et fiable. Le jour même lorsque c'est possible. Diagnostic GRATUIT — sans frais si aucun problème n'est détecté. Aucun frais pour les tests supplémentaires ou le temps passé. Devis gratuits. Payez seulement si c'est réparé."
+  },
+  "uniqueSellingProposition": [
+    "Seul importateur de composants PC à Sidi Bel Abbès",
+    "Plus de 17 ans au service des clients locaux",
+    "Pièces rares en stock — pas besoin de voyager à Oran",
+    "Gamme complète d'accessoires des câbles aux souris de jeu",
+    "Pas de frais de diagnostic — jamais"
+  ]
+}
+  </script>
 <script >
     // setBasePath to tell Shoelace where to load icons from.
     import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
@@ -138,7 +170,11 @@ const { description, title, preloadedImage } = Astro.props;
     setTheme();
   
     document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+
+    
   </script>
+
+
 
 
 
