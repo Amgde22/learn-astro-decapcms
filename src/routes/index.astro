@@ -3,6 +3,7 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import { getCollection } from "astro:content";
+import { getLocalePath, t } from "i18n:astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage,getOptimizedCardImage} from "@js/utils"
@@ -95,7 +96,7 @@ const dataIsReady = products && productsProcessedImages;
 
 
 <Hero />
-
+{t("about")}
 <!-- products -->
 {dataIsReady ? (
   <Products 

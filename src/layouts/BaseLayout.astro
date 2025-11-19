@@ -7,7 +7,10 @@ import "@styles/root.less";
 import "@styles/utils.less";
 import "@styles/dark.less";
 import "@styles/scrollbar.less";
-
+import { ClientRouter } from "astro:transitions";
+import I18nClient from "@astrolicious/i18n/components/I18nClient.astro";
+import I18nHead from "@astrolicious/i18n/components/I18nHead.astro";
+import { getHtmlAttrs, getLocales, t } from "i18n:astro";
 
 // shoelace style
 import "@shoelace-style/shoelace/dist/themes/light.css";
@@ -19,11 +22,11 @@ const { description, title, preloadedImage } = Astro.props;
 
 ---
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
-<html lang="en">
+<html {...getHtmlAttrs()} >
         <head>
-            <!-- View Transitions support -->
-            <ClientRouter />
 
+            <!-- i18n support -->
+            <I18nClient />
             <!-- Standard meta tags -->
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +34,8 @@ const { description, title, preloadedImage } = Astro.props;
             <meta name="description" content={description}>
             <meta name="keywords" content="">
             <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
+
+		<I18nHead />
 
             <!-- Preloads the image passed as a prop -->
             <link rel="preload" href={preloadedImage.src} as="image" />
