@@ -4,8 +4,7 @@ import data from "@data/client.json";
 import { Icon } from 'astro-icon/components';
 import DarkModeToggle from "@components/DarkModeToggle.astro";
 import AmButton from "./AmButton.vue";
-import locationIcon from "@icons/mage--location-fill.svg"
-import { getLocalePath, t } from "i18n:astro";
+import { t } from "i18n:astro";
 
 const {whatsappLink} = data
 const googleMapsLink = data.address.mapLink
@@ -13,34 +12,37 @@ const header = t("header",{ returnObjects: true });
 const visitUsText = header.visit_us
 const needHelpText = header.need_help
 
+// --- Language Logic ---
+const currentPath = Astro.url.pathname;
+const isFrench = currentPath.startsWith("/fr");
+
+// Calculate Target Path
+let targetPath;
+if (isFrench) {
+  targetPath = currentPath.replace(/^\/fr/, "") || "/";
+} else {
+  targetPath = "/fr" + (currentPath === "/" ? "" : currentPath);
+}
+
+// Visuals
+const langFlag = isFrench ? "🇩🇿" : "🇫🇷";
+const langLabel = isFrench ? "AR" : "FR";
+const langName = isFrench ? "Arabic" : "Français"; // For the mobile menu text
 ---
 
-<!-- ============================================ --><!--                 Navigation                   --><!-- ============================================ -->
 <header id="cs-navigation" dir="ltr">
-
   <div class="cs-container">
     <!--Nav Logo-->
     <a href="/" class="cs-logo" aria-label="back to home">
       <h1 class="logo-text font-logo text-center">INFO Pc SBA</h1>
     </a>
 
-
-
-    <AmButton
-    href={googleMapsLink}
-    classes="me-auto"  fontSize="1.2em" collapse>
+    <AmButton href={googleMapsLink} classes="me-auto" fontSize="1.2em" collapse>
       <Icon class={"flex-0"} name="mdi--location" size={25}  />
       <span class="header-cta-button">
         {visitUsText}
       </span>
     </AmButton>
-    <!-- navbar CTA -->
-    <!-- <a href="https://www.google.com/" target="_blank" 
-    class="cs-button-solid always-active">
-    <Icon name="mdi--location" />
-    visit us today
-    </a> -->
-
 
     <!--Navigation List-->
     <nav class="cs-nav" role="navigation">
@@ -53,7 +55,6 @@ const needHelpText = header.need_help
         </div>
       </button>
       
-      <!-- If you want to use another navigation stitch and enjoy the benefits of dynamic routing, replace the .cs-ul-wrapper in the navigation stitch with this one below -->
       <div class="cs-ul-wrapper">
         <ul id="cs-expanded-ul" class="cs-ul">
           {navData.map((entry) => (
@@ -64,10 +65,9 @@ const needHelpText = header.need_help
               ]} 
             >
               {entry.children?.length > 0 ? (
-                // If entry has children in navData.json, create a button and a dropdown icon
                 <button
-                aria-expanded="false"
-                aria-controls={`submenu-${entry.key}`}
+                  aria-expanded="false"
+                  aria-controls={`submenu-${entry.key}`}
                   class:list={[
                     "cs-li-link cs-dropdown-button",
                     { "cs-active": Astro.url.pathname.includes(entry.url)},
@@ -77,7 +77,6 @@ const needHelpText = header.need_help
                   <Icon name="mdi--caret" class="cs-drop-icon" />
                 </button>
               ) : (
-                // If entry does not have children in navData.json, create an anchor
                 <a
                   href={entry.url}
                   class:list={[
@@ -89,36 +88,36 @@ const needHelpText = header.need_help
                   {t(entry.key)}
                 </a>
               )}
-              
-              {/* {entry.children?.length > 0 && (
-                // If entry has children in navData.json, create a drop down menu
-                <ul id={`submenu-${entry.key}`} class="cs-drop-ul">
-                  {entry.children.map((child) => (
-                    <li class="cs-drop-li">
-                      <a 
-                        href={child.url} 
-                        class="cs-li-link cs-drop-link"
-                        aria-current={Astro.url.pathname === child.url ? "page" : undefined}
-                      >
-                        {child.key}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )} */}
             </li>
           ))}
+
+          <!-- MOBILE ONLY: Language Switcher tucked inside the menu -->
+           <li class="cs-li cs-mobile-lang-li">
+             <a href={targetPath} class="cs-li-link cs-mobile-lang-link">
+               <span class="lang-flag">{langFlag}</span> 
+               {langName}
+             </a>
+           </li>
+
         </ul>
       </div>
     </nav>
+
     <a href={whatsappLink} target="_blank" class="cs-button-solid cs-nav-button whatsapp-bg">
-      <!-- <Icon name={"mage--location-fill"} size={"35px"} /> -->
       <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
         <path fill="currentColor" d="M21.99 6.547a11 11 0 0 0-.103-1.282a4.3 4.3 0 0 0-.363-1.09A3.85 3.85 0 0 0 19.83 2.48a4.3 4.3 0 0 0-1.083-.362a11 11 0 0 0-1.292-.105c-.183-.007-.42-.01-.53-.01L7.077 2c-.11 0-.347.003-.53.01a11 11 0 0 0-1.282.103a4.3 4.3 0 0 0-1.09.363A3.85 3.85 0 0 0 2.48 4.17a4.3 4.3 0 0 0-.362 1.083a11 11 0 0 0-.106 1.292c-.006.183-.01.42-.01.53L2 16.923c0 .11.003.347.01.53a11 11 0 0 0 .103 1.282a4.3 4.3 0 0 0 .363 1.09A3.85 3.85 0 0 0 4.17 21.52a4.3 4.3 0 0 0 1.083.362a11 11 0 0 0 1.292.105c.183.007.42.01.53.01l9.848.002c.11 0 .347-.003.53-.01a11 11 0 0 0 1.282-.103a4.3 4.3 0 0 0 1.09-.363a3.85 3.85 0 0 0 1.696-1.694a4.3 4.3 0 0 0 .362-1.083a11 11 0 0 0 .106-1.292c.006-.183.01-.42.01-.53L22 7.077c0-.11-.003-.347-.01-.53m-9.773 12.41h-.003a7.1 7.1 0 0 1-3.407-.868l-3.78.991l1.012-3.693a7.13 7.13 0 1 1 6.178 3.57" />
         <path fill="currentColor" d="M12.22 5.901a5.927 5.927 0 0 0-5.023 9.076l.141.224l-.599 2.186l2.243-.588l.216.128a5.9 5.9 0 0 0 3.016.826h.003A5.926 5.926 0 0 0 12.219 5.9Zm3.484 8.47a1.83 1.83 0 0 1-1.202.847a2.44 2.44 0 0 1-1.122-.07a10 10 0 0 1-1.015-.376a7.94 7.94 0 0 1-3.043-2.689a3.46 3.46 0 0 1-.728-1.842a2 2 0 0 1 .624-1.485a.66.66 0 0 1 .475-.223c.118 0 .237 0 .341.006c.11.005.256-.042.4.306c.15.356.506 1.233.55 1.322a.33.33 0 0 1 .015.312a1.2 1.2 0 0 1-.178.297c-.09.104-.187.232-.267.312c-.09.089-.182.185-.079.363a5.4 5.4 0 0 0 .991 1.234a4.9 4.9 0 0 0 1.433.884c.178.09.282.074.386-.045s.445-.52.564-.698s.237-.148.4-.089s1.04.49 1.218.58s.297.133.341.207a1.5 1.5 0 0 1-.104.847" />
       </svg>
-      {needHelpText}</a>
-    <!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
+      {needHelpText}
+    </a>
+    
+    <!-- DESKTOP/TABLET ONLY: Language Switcher on the bar -->
+    <a href={targetPath} class="lang-toggle lang-toggle-desktop" aria-label={`Switch language to ${langLabel}`}>
+      <span class="lang-flag">{langFlag}</span>
+      <span class="lang-text">{langLabel}</span>
+    </a>
+
+    <!--Dark Mode toggle-->
     <DarkModeToggle />
   </div>
 </header>
@@ -126,10 +125,88 @@ const needHelpText = header.need_help
 <style lang="less">
 
 /*-- -------------------------- -->
+<---     Language Switcher      -->
+<--- -------------------------- -*/
+
+/* General styles for the Desktop/Tablet toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--bodyTextColor);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-left: 8px; 
+  margin-right: 8px; 
+
+  .lang-flag {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+  .lang-text {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--primary);
+  }
+}
+
+body.dark-mode .lang-toggle {
+  color: var(--bodyTextColorWhite);
+  &:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+}
+
+/* Default: Hide the mobile list item (it shows up on desktop if we don't hide it) */
+.cs-mobile-lang-li {
+  display: none !important;
+}
+
+/*-- -------------------------- -->
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
 
-/* Mobile - 1023px */
+/* Styles when screen is smaller than 768px (Phones) */
+
+
+@media only screen and (max-width: 48rem) {
+  /* Hide the header bar toggler */
+  .lang-toggle-desktop {
+    display: none;
+  }
+
+  /* Show the list item inside the sidebar */
+  .cs-mobile-lang-li {
+    display: block !important;
+    margin-top: 1rem; /* Separation from links */
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    width: 100%;
+    opacity: 1 !important; /* Override default opacity animation slightly if needed, though parent handles it */
+    transform: translateX(0) !important; /* Ensure it's visible */
+  }
+
+  .cs-mobile-lang-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align right like other items */
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.2rem; /* Match other links */
+  }
+}
+
+/* Mobile Menu General - 1023px */
 @media only screen and (max-width: 63.9375rem) {
   body {
     &.cs-open {
@@ -140,22 +217,17 @@ const needHelpText = header.need_help
     display: none;
   }
   #cs-navigation {
-
-
     letter-spacing: 1px;
     width: 100%;
     dir:ltr;
-    /* prevents padding from affecting height and width */
     box-sizing: border-box;
     padding: (12/16rem) (16/16rem);
-
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     position: fixed;
     z-index: 5;
 
     &:before {
-      /* black blurred overlay */
       content: "";
       width: 0%;
       height: 100vh;
@@ -172,19 +244,16 @@ const needHelpText = header.need_help
     }
 
     &.cs-active {
-
       &:before {
         width: 100%;
         opacity: 1;
       }
-
       .cs-ul-wrapper {
         opacity: 1;
         visibility: visible;
         transform: scaleX(1);
         transition-delay: 0.2s;
       }
-
       .cs-li {
         opacity: 1;
         transform: translateX(0);
@@ -203,7 +272,6 @@ const needHelpText = header.need_help
       max-width: (146/16rem);
       height: 100%;
       margin: 0 8px 0 0;
-      /* prevents padding from affecting height and width */
       box-sizing: border-box;
       padding: 0;
       display: flex;
@@ -214,22 +282,18 @@ const needHelpText = header.need_help
       img {
         width: 100%;
         height: 100%;
-        /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
         object-fit: contain;
-        /* places the image to the left edge of the parent */
         object-position: left;
       }
-
       .logo-text{
         font-size: 19px;
       }
     }
 
     .cs-toggle {
-      /* 44px - 48px */
       width: clamp(2.75rem, 6vw, 3rem);
       height: clamp(2.75rem, 6vw, 3rem);
-      margin: 0 0 0 auto;
+      margin: 0 0 0 10px;
       background-color: transparent;
       border: none;
       border-radius: (4/16rem);
@@ -243,13 +307,11 @@ const needHelpText = header.need_help
         top: 50%;
         transform: translate(-50%, -50%) rotate(225deg);
       }
-
       .cs-line2 {
         top: 50%;
         transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
         transform-origin: center;
       }
-
       .cs-line3 {
         opacity: 0;
         bottom: 100%;
@@ -257,9 +319,7 @@ const needHelpText = header.need_help
     }
 
     .cs-box {
-      /* 24px - 28px */
       width: clamp(1.5rem, 2vw, 1.75rem);
-      /* 14px - 16px */
       height: clamp(0.875rem, 1.5vw, 1rem);
       position: relative;
     }
@@ -321,7 +381,6 @@ const needHelpText = header.need_help
       min-width: 40%;
       height: 65vh;
       margin: 0;
-      /* 28px - 40px */
       padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
       display: flex;
       flex-direction: column;
@@ -337,41 +396,21 @@ const needHelpText = header.need_help
       width: 100%;
       margin-right: 0;
       opacity: 0;
-      /* transition from these values */
       transform: translateX(-40/16rem);
       transition: transform 0.6s, opacity 0.9s;
 
-      &:nth-of-type(1) {
-        transition-delay: 0.05s;
-      }
-      &:nth-of-type(2) {
-        transition-delay: 0.1s;
-      }
-      &:nth-of-type(3) {
-        transition-delay: 0.15s;
-      }
-      &:nth-of-type(4) {
-        transition-delay: 0.2s;
-      }
-      &:nth-of-type(5) {
-        transition-delay: 0.25s;
-      }
-      &:nth-of-type(6) {
-        transition-delay: 0.3s;
-      }
-      &:nth-of-type(7) {
-        transition-delay: 0.35s;
-      }
-      &:nth-of-type(8) {
-        transition-delay: 0.4s;
-      }
-      &:nth-of-type(9) {
-        transition-delay: 0.45s;
-      }
+      &:nth-of-type(1) { transition-delay: 0.05s; }
+      &:nth-of-type(2) { transition-delay: 0.1s; }
+      &:nth-of-type(3) { transition-delay: 0.15s; }
+      &:nth-of-type(4) { transition-delay: 0.2s; }
+      &:nth-of-type(5) { transition-delay: 0.25s; }
+      &:nth-of-type(6) { transition-delay: 0.3s; }
+      &:nth-of-type(7) { transition-delay: 0.35s; }
+      &:nth-of-type(8) { transition-delay: 0.4s; }
+      &:nth-of-type(9) { transition-delay: 0.45s; }
     }
 
     .cs-li-link {
-      /* 16px - 24px */
       font-size: clamp(1rem, 2.5vw, 1.5rem);
       color: inherit;
       line-height: 1.2em;
@@ -381,7 +420,6 @@ const needHelpText = header.need_help
       position: relative;
 
       &:before {
-        /* active state underline */
         content: "";
         width: 100%;
         height: 1px;
@@ -411,23 +449,12 @@ const needHelpText = header.need_help
   body.dark-mode {
     #cs-navigation {
       background-color: var(--dark);
-
-      .cs-logo {
-        /* makes it white */
-        filter: grayscale(1) brightness(1000%);
-      }
-
-      .cs-line {
-        background-color: #fff;
-      }
-
-      .cs-ul-wrapper {
-        background-color: var(--medium);
-      }
-
-      .cs-li-link {
-        color: var(--bodyTextColorWhite);
-      }
+      .cs-logo { filter: grayscale(1) brightness(1000%); }
+      .cs-line { background-color: #fff; }
+      .cs-ul-wrapper { background-color: var(--medium); }
+      .cs-li-link { color: var(--bodyTextColorWhite); }
+      /* Border color for mobile lang separator in dark mode */
+      .cs-mobile-lang-li { border-top: 1px solid rgba(255,255,255,0.1); }
     }
   }
 }
@@ -435,7 +462,6 @@ const needHelpText = header.need_help
 /*-- -------------------------- -->
 <---     Navigation Dropdown    -->
 <--- -------------------------- -*/
-
 /* Mobile - 1023px */
 @media only screen and (max-width: 1023px) {
   #cs-navigation {
@@ -443,7 +469,6 @@ const needHelpText = header.need_help
       color: var(--bodyTextColorWhite);
       color: var(--headerColor);
       position: relative;
-
       &.cs-active {
         .cs-drop-ul {
           height: auto;
@@ -453,23 +478,14 @@ const needHelpText = header.need_help
           visibility: visible;
           transform: scale(1);
         }
-
-        .cs-drop-link {
-          opacity: 1;
-        }
-
-        .cs-drop-icon {
-          transform: rotate(0);
-        }
+        .cs-drop-link { opacity: 1; }
+        .cs-drop-icon { transform: rotate(0); }
       }
-
       .cs-li-link {
         position: relative;
         transition: opacity 0.3s;
       }
-
     }
-
     .cs-drop-icon {
       width: (15/16rem);
       height: auto;
@@ -478,7 +494,6 @@ const needHelpText = header.need_help
       transform: rotate(180deg);
       transition: 0.3s;
     }
-
     .cs-drop-ul {
       width: 100%;
       height: 0;
@@ -499,25 +514,9 @@ const needHelpText = header.need_help
         transform 0.3s, visibility 0.3s;
       transform-origin: top right;
     }
-
-    .cs-drop-li {
-      text-align: inherit;
-      list-style: none;
-    }
-
-    .cs-li-link {
-      &.cs-drop-link {
-        /* 14px - 16px */
-        font-size: clamp(0.875rem, 2vw, 1.25rem);
-        color: #fff;
-      }
-    }
-
-    .cs-dropdown-button {
-      background-color: transparent;
-      border: none;
-      appearance: none;
-    }
+    .cs-drop-li { text-align: inherit; list-style: none; }
+    .cs-li-link.cs-drop-link { font-size: clamp(0.875rem, 2vw, 1.25rem); color: #fff; }
+    .cs-dropdown-button { background-color: transparent; border: none; appearance: none; }
   }
 }
 
@@ -526,150 +525,50 @@ const needHelpText = header.need_help
   #cs-navigation {
     .cs-dropdown {
       position: relative;
-      &:hover,
-      &.cs-active {
+      &:hover, &.cs-active {
         cursor: pointer;
-        .cs-drop-ul {
-          opacity: 1;
-          visibility: visible;
-          transform: scaleY(1);
-        }
-
-        .cs-drop-li {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        .cs-drop-ul { opacity: 1; visibility: visible; transform: scaleY(1); }
+        .cs-drop-li { opacity: 1; transform: translateY(0); }
       }
     }
-
     .cs-dropdown:has(.cs-drop-icon) {
-      display: flex;
-      align-items: center;
-      &:hover {
-        .cs-drop-icon {
-        transform: rotate(0);
-        }
-      }
+      display: flex; align-items: center;
+      &:hover { .cs-drop-icon { transform: rotate(0); } }
     }
-
-
     .cs-drop-icon {
-      width: (15/16rem);
-      height: auto;
-      display: inline-block;
-      color: inherit;
-      transform: rotate(180deg);
-      transition: 0.3s;
-      
+      width: (15/16rem); height: auto; display: inline-block; color: inherit;
+      transform: rotate(180deg); transition: 0.3s;
     }
-
     .cs-drop-ul {
-      min-width: (200/16rem);
-      margin: 0;
-      padding: 0;
+      min-width: (200/16rem); margin: 0; padding: 0;
       background-color: #fff;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
-      opacity: 0;
-      border-bottom: 5px solid var(--primary);
-      visibility: hidden;
-      /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
-      // columns: 2;
-      position: absolute;
-      top: 100%;
-      z-index: -100;
-      overflow: hidden;
-      transform: scaleY(0);
+      opacity: 0; border-bottom: 5px solid var(--primary);
+      visibility: hidden; position: absolute; top: 100%; z-index: -100;
+      overflow: hidden; transform: scaleY(0);
       transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
       transform-origin: top;
     }
-
     .cs-drop-li {
-      font-size: (16/16rem);
-      text-decoration: none;
-      list-style: none;
-      width: 100%;
-      height: auto;
-      color: var(--bodyTextColor);
-      opacity: 0;
-      display: block;
-      transform: translateY(-10/16rem);
+      font-size: (16/16rem); text-decoration: none; list-style: none;
+      width: 100%; height: auto; color: var(--bodyTextColor);
+      opacity: 0; display: block; transform: translateY(-10/16rem);
       transition: opacity 0.6s, transform 0.6s;
-
-      &:nth-of-type(1) {
-        transition-delay: 0.05s;
-      }
-      &:nth-of-type(2) {
-        transition-delay: 0.1s;
-      }
-      &:nth-of-type(3) {
-        transition-delay: 0.15s;
-      }
-      &:nth-of-type(4) {
-        transition-delay: 0.2s;
-      }
-      &:nth-of-type(5) {
-        transition-delay: 0.25s;
-      }
-      &:nth-of-type(6) {
-        transition-delay: 0.3s;
-      }
-      &:nth-of-type(7) {
-        transition-delay: 0.35s;
-      }
-      &:nth-of-type(8) {
-        transition-delay: 0.4s;
-      }
-      &:nth-of-type(9) {
-        transition-delay: 0.45s;
-      }
-      &:nth-of-type(10) {
-        transition-delay: 0.5s;
-      }
-      &:nth-of-type(11) {
-        transition-delay: 0.55s;
-      }
-      &:nth-of-type(12) {
-        transition-delay: 0.6s;
-      }
-      &:nth-of-type(13) {
-        transition-delay: 0.65s;
-      }
+      &:nth-of-type(1) { transition-delay: 0.05s; }
+      &:nth-of-type(2) { transition-delay: 0.1s; }
+      &:nth-of-type(3) { transition-delay: 0.15s; }
+      &:nth-of-type(4) { transition-delay: 0.2s; }
     }
-
-    .cs-li-link {
-      &.cs-drop-link {
-        font-size: (16/16rem);
-        line-height: 1.5em;
-        text-decoration: none;
-        white-space: nowrap;
-        width: 100%;
-        /* prevents padding from affecting height and width */
-        box-sizing: border-box;
-        padding: (12/16rem);
-        color: var(--bodyTextColor);
-        display: block;
-        transition: color 0.3s, background-color 0.3s;
-
-        &:hover {
-          background-color: #f7f7f7;
-        }
-
-        &:focus-within {
-          outline: 2px solid currentColor;
-          outline-offset: -2px;
-        }
-
-        &:before {
-          display: none;
-        }
-      }
+    .cs-li-link.cs-drop-link {
+      font-size: (16/16rem); line-height: 1.5em; text-decoration: none;
+      white-space: nowrap; width: 100%; box-sizing: border-box; padding: (12/16rem);
+      color: var(--bodyTextColor); display: block;
+      transition: color 0.3s, background-color 0.3s;
+      &:hover { background-color: #f7f7f7; }
+      &:focus-within { outline: 2px solid currentColor; outline-offset: -2px; }
+      &:before { display: none; }
     }
-
-    .cs-dropdown-button {
-      background-color: transparent;
-      border: none;
-      appearance: none;
-    }
+    .cs-dropdown-button { background-color: transparent; border: none; appearance: none; }
   }
 }
 
@@ -677,22 +576,9 @@ const needHelpText = header.need_help
 @media only screen and (min-width: 0rem) {
   body.dark-mode {
     #cs-navigation {
-      .cs-drop-ul {
-        background-color: var(--dark);
-      }
-
-      .cs-li-link {
-        &.cs-drop-link {
-          &:hover {
-            background-color: var(--medium);
-          }
-        }
-      }
-
-      .cs-drop-icon {
-        /* turns it white */
-        filter: grayscale(1) brightness(1000%);
-      }
+      .cs-drop-ul { background-color: var(--dark); }
+      .cs-li-link.cs-drop-link:hover { background-color: var(--medium); }
+      .cs-drop-icon { filter: grayscale(1) brightness(1000%); }
     }
   }
 }
@@ -704,102 +590,35 @@ const needHelpText = header.need_help
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #cs-navigation {
-
-    width: 100%;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
-    padding: 0 (16/16rem);
+    width: 100%; box-sizing: border-box; padding: 0 (16/16rem);
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    position: fixed;
-    z-index: 10000;
+    position: fixed; z-index: 10000;
 
     .cs-container {
-      width: 100%;
-      max-width: (1280/16rem);
-      margin: auto;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: (24/16rem);
+      width: 100%; max-width: (1280/16rem); margin: auto;
+      display: flex; justify-content: flex-end; align-items: center; gap: (24/16rem);
     }
-
-    .cs-toggle {
-      display: none;
-    }
-
+    .cs-toggle { display: none; }
     .cs-logo {
-      width: 18.4%;
-      max-width: (350/16rem);
-      height: (65/16rem);
-      /* margin-right auto pushes everything away from it to the right */
-
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-
-      img {
-        width: 100%;
-        height: 100%;
-        /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
-        object-fit: contain;
-      }
+      width: 18.4%; max-width: (350/16rem); height: (65/16rem);
+      padding: 0; display: flex; justify-content: center; align-items: center; z-index: 100;
+      img { width: 100%; height: 100%; object-fit: contain; }
     }
-
     .cs-ul {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      /* 20px - 36px */
+      width: 100%; margin: 0; padding: 0;
+      display: flex; justify-content: flex-start; align-items: center;
       gap: clamp(1.25rem, 2.6vw, 2.25rem);
     }
-
-    .cs-li {
-      list-style: none;
-      padding: (32/16rem) 0;
-      /* prevent flexbox from squishing it */
-      flex: none;
-    }
-
+    .cs-li { list-style: none; padding: (32/16rem) 0; flex: none; }
     .cs-li-link {
-      /* 14px - 16px */
-      // font-size: clamp(0.875rem, 1vw, 1rem);
-      font-size: 18px ;
-      line-height: 1.5em;
-      text-decoration: none;
-      margin: 0;
-      color: var(--bodyTextColor);
-      display: block;
-      position: relative;
-      &:hover {
-        &:before {
-          width: 100%;
-        }
-      }
-
-      &.cs-active {
-        &:before {
-          width: 100%;
-        }
-      }
-
+      font-size: 18px; line-height: 1.5em; text-decoration: none;
+      margin: 0; color: var(--bodyTextColor); display: block; position: relative;
+      &:hover:before, &.cs-active:before { width: 100%; }
       &:before {
-        /* active state underline */
-        content: "";
-        width: 0%;
-        height: 2px;
-        background: var(--primary);
-        opacity: 1;
-        display: block;
-        position: absolute;
-        bottom: (0/16rem);
-        left: 0;
-        transition: width 0.3s;
+        content: ""; width: 0%; height: 2px; background: var(--primary);
+        opacity: 1; display: block; position: absolute; bottom: (0/16rem);
+        left: 0; transition: width 0.3s;
       }
     }
   }
@@ -810,35 +629,17 @@ const needHelpText = header.need_help
   body.dark-mode {
     #cs-navigation {
       background-color: var(--dark);
-
-      .cs-logo {
-        /* makes it turn white */
-        filter: grayscale(1) brightness(1000%);
-      }
-      .cs-nav-button{
-        color: white;
-      }
-      .cs-nav-button:hover,.cs-nav-button:focus{
-        color: var(--whatsapp);
-      }
-      .cs-li-link {
-        color: var(--bodyTextColorWhite);
-      }
-
-      .cs-li-link {
-        &:before {
-          background-color: var(--primaryLight);
-        }
-      }
+      .cs-logo { filter: grayscale(1) brightness(1000%); }
+      .cs-nav-button { color: white; }
+      .cs-nav-button:hover, .cs-nav-button:focus { color: var(--whatsapp); }
+      .cs-li-link { color: var(--bodyTextColorWhite); }
+      .cs-li-link:before { background-color: var(--primaryLight); }
     }
   }
 }
 
-.cs-li-link.cs-active{
-  font-weight: bolder;
-}
-.cs-nav-button{
-  background-color: transparent !important;
-}
+.cs-li-link.cs-active{ font-weight: bolder; }
+.cs-nav-button{ background-color: transparent !important; }
+
 
 </style>
