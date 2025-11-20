@@ -1,9 +1,27 @@
+---
+import { getLocalePath, t } from "i18n:astro";
+
+const faq = t("faq",{ returnObjects: true });
+const faqTopper = faq.topper
+const faqTitle = faq.title
+const faqQ1 = faq.q1
+const faqA1 = faq.a1
+const faqQ2 = faq.q2
+const faqA2 = faq.a2
+const faqQ3 = faq.q3
+const faqA3Part1 = faq.a3_part1
+const faqA3Part2 = faq.a3_part2
+const faqA3Part3 = faq.a3_part3
+const faqQ4 = faq.q4
+const faqA4 = faq.a4
+---
+
 <section id="faq-1741">
   <div class="cs-container">
     <div class="cs-content">
-      <span class="cs-topper">Tout Savoir</span>
+      <span class="cs-topper">{faqTopper}</span>
       <h2 class="cs-title">
-        Questions fréquemment posées par nos clients
+        {faqTitle}
       </h2>
     </div>
     <div class="cs-flex-group">
@@ -12,44 +30,42 @@
       <li class="cs-faq-item active">
           <button class="cs-button">
             <span class="cs-button-text">
-              Puis-je faire améliorer les performances de mon ordinateur chez vous?
+              {faqQ1}
             </span>
           </button>
           <p class="cs-item-text">
-            Absolument. Nous proposons des optimisations de système, des mises à niveau de mémoire (RAM), l'installation de disques SSD plus rapides, et bien plus encore.
+            {faqA1}
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              Vendez-vous des ordinateurs et des pièces détachées?
+              {faqQ2}
             </span>
           </button>
           <p class="cs-item-text">
-            Oui! Nous avons une large sélection d'ordinateurs neufs et d'occasion, ainsi que tous les composants nécessaires pour améliorer ou réparer votre machine.
+            {faqA2}
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              Comment puis-je vous contacter et où êtes-vous situés?
+              {faqQ3}
             </span>
           </button>
           <p class="cs-item-text">
-            Vous pouvez nous contacter par téléphone au <a href="tel:+213770662425">(0770662425)</a>, 
-            par e-mail à <a href="mailto:tester.infopc@gmail.com">tester.infopc@gmail.com</a>, 
-            ou visiter notre magasin à <a href="https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5">Google Maps</a>
+            {faqA3Part1}<a href="tel:+213770662425">(0770662425)</a>{faqA3Part2}<a href="mailto:tester.infopc@gmail.com">tester.infopc@gmail.com</a>{faqA3Part3}<a href="https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5">Google Maps</a>
             
           </p>
         </li>
         <li class="cs-faq-item">
           <button class="cs-button">
             <span class="cs-button-text">
-              Combien coûte une réparation ou une mise à niveau?
+              {faqQ4}
             </span>
           </button>
           <p class="cs-item-text">
-            Les prix varient en fonction de la complexité du problème et des pièces nécessaires. Contactez-nous pour un devis gratuit et sans engagement.
+            {faqA4}
           </p>
         </li>
       </ul>

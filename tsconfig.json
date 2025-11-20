@@ -31,6 +31,9 @@
       ],
       "@icons/*": [
         "src/icons/*"
+      ],
+      "@locales/*": [
+        "src/locales/*"
       ]
     },
     "incremental": true,

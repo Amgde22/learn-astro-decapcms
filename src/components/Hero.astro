@@ -3,19 +3,19 @@ import Socials from "./Socials.astro"
 import {address} from "@data/client.json"
 import heroImage from "@assets/images/hero.webp"
 import { Icon } from 'astro-icon/components';
-
-const title = "Votre Informatique, Simplifiée"
-const Description = "La seule véritable boutique tout-en-un PC de Sidi Bel Abbès"
-const cta = "Visitez-nous!"
-const service1_title = "Optimisation Système"
-const service2_title = "Consultation Info"
-const service3_title = "Vente Matériel"
-const service4_title = "Réparation PC"
-
-const service1_description = "Accélérez votre machine pour une meilleure productivité."
-const service2_description = "Conseils experts pour vos projets informatiques."
-const service3_description = " Ordinateurs, composants, et accessoires performants."
-const service4_description = "Diagnostics rapides et réparations efficaces."
+import { getLocalePath, t } from "i18n:astro";
+const hero = t("hero" , { returnObjects: true })
+const heroTitle = hero.title
+const heroDescription = hero.description
+const heroCta = hero.cta
+const heroService1Title = hero.service1_title
+const heroService2Title = hero.service2_title
+const heroService3Title = hero.service3_title
+const heroService4Title = hero.service4_title
+const heroService1Description = hero.service1_description
+const heroService2Description = hero.service2_description
+const heroService3Description = hero.service3_description
+const heroService4Description = hero.service4_description
 
 const {mapLink} = address
 ---
@@ -37,7 +37,7 @@ const {mapLink} = address
                     <path d="M38.7789 7.49889L44.5596 15L48.5 15L42.7193 7.49889L48.5 -4.2492e-07L44.5596 -2.52681e-07L38.7789 7.49889Z" fill="var(--chevronColor)"/>
                     </g>
                 </svg>
-                {title}
+                {heroTitle}
                 <svg class="cs-chevron" width="49" height="15" viewBox="0 0 49 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.7">
                     <path d="M48.3781 7.49889L42.5974 15L38.657 15L44.4377 7.49889L38.657 -4.2492e-07L42.5974 -2.52681e-07L48.3781 7.49889Z" fill="var(--chevronColor)"/>
@@ -50,12 +50,12 @@ const {mapLink} = address
                 </svg>
             </span>
             <h1 class="cs-title">
-                {Description}
+                {heroDescription}
             </h1>
             <div class="footer">
                 <a href={mapLink} target="_blank" class="cta cs-button-solid">
                 <Icon class={"flex-0"} name="mdi--location" size={25}  />
-                    {cta}
+                    {heroCta}
                 </a>
             <Socials />
             </div>
@@ -68,17 +68,17 @@ const {mapLink} = address
             <li class="cs-item">
                 <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/speedometer.svg" alt="icon" width="48" height="48">
 
-                <h3 class="cs-h3">{service1_title}</h3>
+                <h3 class="cs-h3">{heroService1Title}</h3>
                 <p class="cs-item-text">
-                    {service1_description}
+                    {heroService1Description}
                 </p>
             </li>
             <li class="cs-item">
                 <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/check-circle.svg" alt="icon" width="48" height="48">
 
-                <h3 class="cs-h3">{service2_title}</h3>
+                <h3 class="cs-h3">{heroService2Title}</h3>
                 <p class="cs-item-text">
-                    {service2_description}
+                    {heroService2Description}
 
                 </p>
             </li>
@@ -91,9 +91,9 @@ const {mapLink} = address
                         <path d="M11.375 4.875a.125.125 0 1 1 0-.25m0 .25a.125.125 0 1 0 0-.25M10.5 7h3" />
                     </g>
                 </svg>
-                <h3 class="cs-h3">{service3_title}</h3>
+                <h3 class="cs-h3">{heroService3Title}</h3>
                 <p class="cs-item-text">
-                    {service3_description}
+                    {heroService3Description}
                    
                 </p>
             </li>
@@ -104,9 +104,9 @@ const {mapLink} = address
                         <path d="m11.797 14.5l5.604 5.604a1.35 1.35 0 0 0 1.911 0l.792-.792a1.35 1.35 0 0 0 0-1.911L14.5 11.797" />
                     </g>
                 </svg>
-                <h3 class="cs-h3">{service4_title}</h3>
+                <h3 class="cs-h3">{heroService4Title}</h3>
                 <p class="cs-item-text">
-                    {service4_description}
+                    {heroService4Description}
                   
                 </p>
             </li>
@@ -137,6 +137,9 @@ const {mapLink} = address
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #hero-1619 {
+        /* Store gradient in a variable */
+        --heroGradient: linear-gradient(90deg, #111926 21.41%, rgba(17, 25, 38, 0.72) 34.98%, rgba(17, 25, 38, 0.00) 62.53%);
+        
         padding: var(--sectionPadding);
 	    /* 200px - 300px - leaving extra space for the navigation */
         padding-top: clamp(12.5rem, 31.95vw, 18.75rem);
@@ -159,7 +162,7 @@ const {mapLink} = address
 
         .cs-content {
             /* set text align to left if content needs to be left aligned */
-            text-align: left;
+            text-align: start;
             width: 100%;
             max-width: (780/16rem);
             display: flex;
@@ -170,14 +173,14 @@ const {mapLink} = address
 
         .cs-topper {
             /* 13px - 16px */
-            font-size: clamp(.8125rem, 1.5vw, 1rem);
+            font-size: clamp(1rem, 2vw, 1.4rem);
             line-height: 1.2em;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-align: center;
             text-transform: uppercase;
             margin-bottom: (32/16rem);
-            color: var(--primary);
+            color: var(--primaryLight);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -187,9 +190,9 @@ const {mapLink} = address
 
         .cs-chevron {
             --chevronColor: var(--primary);
-
             width: (48/16rem);
             height: auto;
+            transition: transform 0.3s ease; /* Added transition for smoothness */
         }
 
         .cs-title {
@@ -197,7 +200,7 @@ const {mapLink} = address
             font-size: clamp(2rem, 6.40vw, 3.8125rem);
             font-weight: 700;
             line-height: 1.2em;
-            text-align: inherit;
+            text-align: start;
             max-width: 100%;
             margin: 0 0 (40/16rem) 0;
             color: #dedede;
@@ -238,17 +241,19 @@ const {mapLink} = address
 	    	font-weight: 700;
             margin: 0;
             color: #fff;
-
+            letter-spacing:2px;
             background-color: var(--medium);
             box-shadow: var(--shadow-elevation-medium);
             position: relative;
 
-            text-decoration: underline;
+
             width: 100%;
 
             svg {
 
-
+                width:20px;
+                height:20px;
+                translate:0 4px;
             }
             &:before {
                 content: '';
@@ -291,7 +296,7 @@ const {mapLink} = address
             margin:0;
             /* 24px - 32px */
             padding: clamp(1.5rem, 3vw, 2rem);
-            background-color: #fff;
+            background-color: #eee;
             box-shadow: 0px 12px 80px 0px rgba(26, 26, 26, 0.18);
             /* prevents padding from affecting height and width */
             box-sizing: border-box;
@@ -303,11 +308,12 @@ const {mapLink} = address
             justify-content: center;
             position: relative;
             z-index: 1;
+            translate:0 -16px;
         }
         .cs-icon {
             width: (48/16rem);
             height: auto;
-            margin: 0 0 (24/16rem) 0;
+            margin: 0 0 (16/16rem) 0;
             flex: 0 0 auto;
         }
 
@@ -317,7 +323,7 @@ const {mapLink} = address
             line-height: 1.2em;
             font-weight: bold;
             text-align: inherit;
-            margin: 0 0 (16/16rem) 0;
+            margin: 0 0 (4/16rem) 0;
             color: var(--headerColor);
         }
 
@@ -391,9 +397,12 @@ const {mapLink} = address
         .cs-container {
             align-items: flex-start;
         }
+        .cs-item-text, .cs-h3{
+            text-align:start;
+        }
 
         .cs-content {
-            text-align: left;
+            text-align: start;
             margin-left: 0;
             align-items: flex-start;
         }
@@ -408,10 +417,13 @@ const {mapLink} = address
         .cs-background {
             height:87%;
             &:before {
-                background: linear-gradient(90deg, #111926 21.41%, rgba(17, 25, 38, 0.72) 34.98%, rgba(17, 25, 38, 0.00) 62.53%);
+                /* Use the variable here */
+                background: var(--heroGradient);
                 opacity: 1;
             }
         }
+
+
     }
 }
 
@@ -477,6 +489,19 @@ const {mapLink} = address
                 }
             }
         }
+    }
+}
+
+/* RTL Logic */
+:global([dir="rtl"]) {
+    /* Reverse the gradient direction for RTL (90deg becomes -90deg) */
+    #hero-1619 {
+        --heroGradient: linear-gradient(-90deg, #111926 21.41%, rgba(17, 25, 38, 0.72) 34.98%, rgba(17, 25, 38, 0.00) 62.53%);
+    }
+    
+    /* Rotate chevrons 180 degrees */
+    #hero-1619 .cs-chevron {
+        transform: rotate(180deg);
     }
 }
                                 

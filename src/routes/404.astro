@@ -3,13 +3,21 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import landingImage from "@assets/images/hero.webp";
 import { getOptimizedImage } from "@js/utils";
 import Landing from "@components/Landing.astro";
+import { getLocalePath, t } from "i18n:astro";
 
 const optimizedImage = await getOptimizedImage(landingImage);
+
+const pageTitle = t("error404.title");
+const pageDescription = t("error404.description");
+const headingText = t("error404.heading");
+const messageText = t("error404.message");
+const backToHomeText = t("error404.back_to_home");
+const previousPageText = t("error404.previous_page");
 ---
 
 <BaseLayout
-  title="404 Not Found"
-  description="Oups ! Page introuvable. Vérifiez l'adresse ou utilisez la recherche. Retournez à la page d'accueil pour continuer votre navigation."
+  title={pageTitle}
+  description={pageDescription}
   preloadedImage={optimizedImage}
 >
   <Landing title="404" image={optimizedImage} />
@@ -22,10 +30,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
         <span>4</span>
       </div>
 
-      <h1>Page Non Trouvée</h1>
+      <h1>{headingText}</h1>
 
       <p class="error-message">
-        Oups ! La page que vous recherchez semble avoir disparu dans l'espace numérique.
+        {messageText}
       </p>
 
       <div class="action-buttons">
@@ -33,14 +41,14 @@ const optimizedImage = await getOptimizedImage(landingImage);
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
             <path fill="currentColor" d="M22 9L12 1L2 9v2h2v10h5v-4a3 3 0 1 1 6 0v4h5V11h2z" />
           </svg>
-          Retour à l'accueil
+          {backToHomeText}
         </sl-button>
 
         <sl-button class="button" variant="neutral" size="large" href="javascript:history.back()">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 20 20">
             <path fill="currentColor" d="M19 7v6c0 1.103-.896 2-2 2H3v-3h13V8H5v2L1 6.5L5 3v2h12a2 2 0 0 1 2 2" />
           </svg>
-          Page précédente
+          {previousPageText}
         </sl-button>
       </div>
     </div>

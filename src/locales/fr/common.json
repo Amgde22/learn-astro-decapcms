@@ -1,65 +1,101 @@
 {
-    "home": "Accueil",
-    "about": "À propos",
-    "how it works": "Comment ça marche",
-    "pricing": "Tarifs",
-    "hire an agent pricing": "Forfaits Agent Dédié",
-    "phone answering service pricing": "Forfaits Réception d'Appels",
-    "Call Answering Service":"Service Réception d'Appels",
-    "more":"Plus",
-    "privacy policy":"Politique de confidentialite",
-"terms of service":"Conditions D'utilisatio",
-    "projects": "Portfolio",
-    "project-1": "Projet 1",
-    "project-2": "Projet 2",
-    "blog": "Blog",
-    "contact": "Contact",
-    "theme-label": "Select theme",
-    "language-label": "Select language",
-    "languageSelect": {
-        "en": "Anglais",
-        "fr": "Français"
+    "Accueil":"Accueil",
+    "Produits":"Produits",
+    "home": {
+        "title": "Page d'accueil",
+        "description": "Sidi Bel Abbès Solutions Informatiques : Réparation PC, optimisation système & consulting IT. +17 ans d'expérience ! Service rapide et fiable. Vente matériel, conseils d'experts et plus ! Appelez le (0770662425) ou visitez-nous !",
+        "discover_more": "...Découvrir plus",
+        "loading_products": "Loading products..."
     },
-    "themeSelect": {
-        "accessibleLabel": "Choisissez le thème",
-        "light": "Clair",
-        "dark": "Sombre",
-        "auto": "Auto"
+    "products": {
+        "title": "Produits",
+        "description": "Large choix de matériel informatique à Sidi Bel Abbès : ordinateurs, composants, périphériques et plus ! Trouvez la solution idéale pour vos besoins. Conseils personnalisés et prix compétitifs !",
+        "heading":"Nos Produits :",
+        "tags":{
+            "tout":"Tout",
+            "ordinateur de bureau": "ordinateur de bureau",
+            "ordinateur portable": "ordinateur portable",
+            "gaming": "gaming",
+            "audio": "audio",
+            "souris": "souris",
+            "clavier": "clavier",
+            "câbles": "câbles",
+            "accessoires": "accessoires",
+            "écrans": "écrans",
+            "réseau": "réseau",
+            "stockage": "stockage",
+            "ventilo": "ventilo",
+            "Carte Graphique": "Carte Graphique",
+            "alimentation": "alimentation",
+            "RAM": "RAM",
+            "processeur": "processeur"
+          }
+
     },
-    "quote": "Obtenir devis gratuit",
-    "estimate": "Obtenir un devis",
-    "ctaComponent": {
-        "title": "Confiez votre projet",
-        "subtitle": "à nos experts",
-        "message": "Dites quelque chose d'accrocheur, d'informatif et d'encourageant à cliquer sur le bouton pour aller à la page de contact. J'aime ajouter cette bannière en bas de chaque page.",
-        "cta": "Obtenir un devis",
-        "alt":" "
+    "error404": {
+        "title": "404 Not Found",
+        "description": "Oups ! Page introuvable. Vérifiez l'adresse ou utilisez la recherche. Retournez à la page d'accueil pour continuer votre navigation.",
+        "heading": "Page Non Trouvée",
+        "message": "Oups ! La page que vous recherchez semble avoir disparu dans l'espace numérique.",
+        "back_to_home": "Retour à l'accueil",
+        "previous_page": "Page précédente"
     },
-    "about-page": {
-        "landing": "À propos",
-        "topper": "À propos",
-        "title": "À propos de Nom de la Compagnie",
-        "p-1": "Notre compagnie a été fondée In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.",
-        "p-2": "Nous croyons que In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.",
-        "p-3": "Il est vital de In consequat tincidunt turpis sit amet imperdiet.",
-        "rank": "PDG",
-        "cta": "Notre portfolio"
+    "cta": {
+        "title_part1": "Réalisez Vos Projets",
+        "title_part2": "Avec Nous Dès Aujourd'hui",
+        "description": "Rédigez un texte accrocheur, informatif et encourageant à cliquer sur le bouton pour accéder à la page de contact. J'aime les ajouter en bas de toutes les pages.",
+        "button_text": "Obtenez une Estimation Maintenant"
+    },
+    "faq": {
+        "topper": "Tout Savoir",
+        "title": "Questions fréquemment posées par nos clients",
+        "q1": "Puis-je faire améliorer les performances de mon ordinateur chez vous?",
+        "a1": "Absolument. Nous proposons des optimisations de système, des mises à niveau de mémoire (RAM), l'installation de disques SSD plus rapides, et bien plus encore.",
+        "q2": "Vendez-vous des ordinateurs et des pièces détachées?",
+        "a2": "Oui! Nous avons une large sélection d'ordinateurs neufs et d'occasion, ainsi que tous les composants nécessaires pour améliorer ou réparer votre machine.",
+        "q3": "Comment puis-je vous contacter et où êtes-vous situés?",
+        "a3_part1": "Vous pouvez nous contacter par téléphone au ",
+        "a3_part2": ", par e-mail à ",
+        "a3_part3": ", ou visiter notre magasin à ",
+        "q4": "Combien coûte une réparation ou une mise à niveau?",
+        "a4": "Les prix varient en fonction de la complexité du problème et des pièces nécessaires. Contactez-nous pour un devis gratuit et sans engagement."
     },
     "footer": {
-        "information": "informations",
+        "information": "Information",
         "services": "Services",
+        "system_optimization": "Optimisation Système",
+        "it_consultation": "Consultation Info",
+        "hardware_sales": "Vente Matériel",
+        "pc_repair": "Réparation PC",
         "contact": "Contact",
-        "click": "Nous envoyer un email",
-        "p": "Contenu supplémentaire si vous en avez besoin, sinon vous pouvez supprimer tout ce tag <p>. C'est ce que je fais habituellement.",
-        "credit": "Conçu et codé maison par "
+        "phone_prefix": "T:",
+        "click_to_email": "Cliquez pour Envoyer un E-mail",
+        "copyright": "© {year} - Info PC SBA. Tous droits réservés.",
+        "website_by": "Site web par",
+        "manager": "(Manager)",
+        "whatsapp": "WhatsApp",
+        "call": "Appeler",
+        "email": "E-mail"
     },
-    "notFound": {
-        "pageNotFound": "404 - La page que vous cherchez n'existe pas.",
-        "linkText": "Retourner à la page d'accueil"
+    "header": {
+        "visit_us": "Visitez-nous!",
+        "need_help": "Besoin d'Aide ?"
     },
-    "skipLink": "Cliquez pour accéder au contenu principal.",
-    "pagination": {
-        "previous": "Préc.",
-        "next": "Suiv."
+    "hero": {
+        "title": "Votre Informatique, Simplifiée",
+        "description": "La seule véritable boutique tout-en-un PC de Sidi Bel Abbès",
+        "cta": "Visitez-nous!",
+        "service1_title": "Optimisation Système",
+        "service2_title": "Consultation Info",
+        "service3_title": "Vente Matériel",
+        "service4_title": "Réparation PC",
+        "service1_description": "Accélérez votre machine pour une meilleure productivité.",
+        "service2_description": "Conseils experts pour vos projets informatiques.",
+        "service3_description": "Ordinateurs, composants, et accessoires performants.",
+        "service4_description": "Diagnostics rapides et réparations efficaces."
+    },
+    "socials":{
+        "title":"Contactez-nous"
     }
+
 }

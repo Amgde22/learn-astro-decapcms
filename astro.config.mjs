@@ -14,10 +14,10 @@ export default defineConfig({
   integrations: [icon(),
    sitemap({    
       i18n: {
-        defaultLocale: 'en', // All urls that don't contain `es` or `fr` after `"https://www.yourwebsite.com/"` will be treated as default locale, i.e. `en`
+        defaultLocale: 'ar', // All urls that don't contain `es` or `fr` after `"https://www.yourwebsite.com/"` will be treated as default locale, i.e. `en`
         locales: {
           // key/value pairs of all languages supported
-          en: 'en-US', // The `defaultLocale` value must be present in `locales` keys
+          ar: 'ar-DZ', // The `defaultLocale` value must be present in `locales` keys
           fr: 'fr-FR',
         },
       },
@@ -26,8 +26,8 @@ export default defineConfig({
     priority: 0.7,
    }),
    i18n({
-    defaultLocale: "en",
-    locales: ["fr", "en"],
+    defaultLocale: "ar",
+    locales: ["ar", "fr"],
     client: {
       data: true,
       paths: true,

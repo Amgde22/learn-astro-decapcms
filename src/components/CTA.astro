@@ -4,20 +4,27 @@ import CSPicture from "@components/TemplateComponents/CSPicture.astro";
 import mobileImage from "@assets/images/CTA/construction-m.jpg"
 import desktopImage from "@assets/images/CTA/cabinets2.jpg"
 import fallbackImage from "@assets/images/CTA/cabinets2.jpg"
+import { getLocalePath, t } from "i18n:astro";
+
+const cta = t("cta",{ returnObjects: true });
+
+const ctaTitlePart1 = cta.title_part1
+const ctaTitlePart2 = cta.title_part2
+const ctaDescription = cta.description
+const ctaButtonText = cta.button_text
 ---
 
 <section id="cta">
   <div class="container">
     <h2 class="title">
-      Get It Done
+      {ctaTitlePart1}
       <br />
-       With Us Today
+       {ctaTitlePart2}
     </h2>
     <p>
-      Say something catchy, informative, and encouraging to click the button to
-      go to the contact page. I like to add these to the bottom of all pages.
+      {ctaDescription}
     </p>
-    <a href="/contact" class="cs-button-solid">Get an Estimate Now</a>
+    <a href="/contact" class="cs-button-solid">{ctaButtonText}</a>
   </div>
   <CSPicture
     mobileImgUrl={mobileImage}

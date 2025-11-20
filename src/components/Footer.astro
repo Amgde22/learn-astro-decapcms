@@ -2,9 +2,27 @@
 import client from "@data/client.json";
 import navData from "@data/navData.json";
 import { getCurrentYear } from "@js/utils"
+import { getLocalePath, t } from "i18n:astro";
 
 const currentYear = getCurrentYear()
 const {mapLink} = client.address
+
+const footer = t("footer",{ returnObjects: true })
+const infoHeading = footer.information
+const servicesHeading = footer.services
+const systemOptimization = footer.system_optimization
+const itConsultation = footer.it_consultation
+const hardwareSales = footer.hardware_sales
+const pcRepair = footer.pc_repair
+const contactHeading = footer.contact
+const phonePrefix = footer.phone_prefix
+const clickToEmail = footer.click_to_email
+const copyrightText = footer.copyright
+const websiteBy = footer.website_by
+const manager = footer.manager
+const whatsapp = footer.whatsapp
+const call = footer.call
+const email = footer.email
 ---
 
 <!-- ============================================ --><!--                   Footer                     --><!-- ============================================ -->
@@ -21,7 +39,7 @@ const {mapLink} = client.address
       <div class="lists">
         <ul>
           <li>
-            <h2>Information</h2>
+            <h2>{infoHeading}</h2>
           </li>
           {
             navData.map((entry) => (
@@ -35,24 +53,24 @@ const {mapLink} = client.address
         </ul>
         <ul>
           <li>
-            <h2>Services</h2>
+            <h2>{servicesHeading}</h2>
           </li>
-          <li>Optimisation Système
+          <li>{systemOptimization}
 
           </li>
-          <li>Consultation Info
+          <li>{itConsultation}
 
           </li>
-          <li>Vente Matériel
+          <li>{hardwareSales}
 
           </li>
-          <li>Réparation PC
+          <li>{pcRepair}
 
           </li>
         </ul>
         <ul>
           <li>
-            <h2>Contact</h2>
+            <h2>{contactHeading}</h2>
           </li>
           <li>
             <a href={mapLink}>
@@ -65,12 +83,12 @@ const {mapLink} = client.address
           </li>
           <li>
             <a href={`tel:${client.phoneForTel}`}>
-              T:
+              {phonePrefix}
               {client.phoneFormatted}
             </a>
           </li>
           <li>
-            <a href={`mailto:${client.email}`}>Click to Email</a>
+            <a href={`mailto:${client.email}`}>{clickToEmail}</a>
           </li>
         </ul>
       </div>
@@ -79,14 +97,14 @@ const {mapLink} = client.address
 
   <div class="credit">
     <span class="copyright"> 
-      © {currentYear} - Info PC SBA. Tous droits réservés.
+      {copyrightText} {currentYear}
     </span>
     <span class="design-credit">
-      Website by <a href="https://www.instagram.com/majd_studios/" target="_blank" rel="noopener">Majd Studios</a> (Manager)
+      {websiteBy} <a href="https://www.instagram.com/majd_studios/" target="_blank" rel="noopener">Majd Studios</a> {manager}
       <span class="contact-links">
-        <a href="https://wa.me/213556640229" target="_blank" rel="noopener">WhatsApp</a> | 
-        <a href="tel:0556640229">Call</a> | 
-        <a href="mailto:magidembarek@gmail.com">Email</a>
+        <a href="https://wa.me/213556640229" target="_blank" rel="noopener">{whatsapp}</a> | 
+        <a href="tel:0556640229">{call}</a> | 
+        <a href="mailto:magidembarek@gmail.com">{email}</a>
       </span>
     </span>
   </div>

@@ -5,7 +5,7 @@
          :class="{selected:selectedItem == '' }"
          @click="selectItem('')"
          >
-            {{ selectAllLabel }}
+            {{ t(selectAllLabel) }}
         </button>
 
         <button
@@ -15,13 +15,16 @@
 
          @click="selectItem(item)"
          >
-            {{ item }}
+            {{ t(item) }}
         </button>
     </div>
 </template>
 
 <script setup>
 import {ref} from "vue"
+import useT from "@js/useT"
+
+const {t} = useT("products.tags")
 const emit = defineEmits(["select"])
 const props = defineProps({
     items:Array,
@@ -49,8 +52,8 @@ function selectItem(item) {
     display: flex;
     gap: 8px;
 
-    padding-left: 16px;
-    padding-left: min(5vw,32px);
+    padding-inline-start: 16px;
+    padding-inline-start: min(5vw,32px);
 
     & .item{
         flex:0 0 auto;

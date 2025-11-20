@@ -160,6 +160,19 @@ a {
 @media only screen and (min-width: 0em) {
   // Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
 
+// arabic font
+/* Global CSS */
+@font-face {
+  font-family: 'Mada';
+  /* Point to your file */
+  src: url('/assets/fonts/Mada-VariableFont_wght.ttf') format('truetype');
+  
+  font-weight: 100 900; 
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; 
+}
+
   /* roboto-regular - latin */
   @font-face {
     font-style: normal;
@@ -196,7 +209,7 @@ a {
 
   body,
   html {
-    font-family: "Roboto", Arial, sans-serif;
+    font-family: "Mada","Roboto", Arial, sans-serif;
     font-size: 100%;
     margin: 0;
     padding: 0;

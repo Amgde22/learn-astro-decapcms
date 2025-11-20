@@ -7,7 +7,8 @@ import "@styles/root.less";
 import "@styles/utils.less";
 import "@styles/dark.less";
 import "@styles/scrollbar.less";
-import { ClientRouter } from "astro:transitions";
+
+
 import I18nClient from "@astrolicious/i18n/components/I18nClient.astro";
 import I18nHead from "@astrolicious/i18n/components/I18nHead.astro";
 import { getHtmlAttrs, getLocales, t } from "i18n:astro";
@@ -24,7 +25,9 @@ const { description, title, preloadedImage } = Astro.props;
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
 <html {...getHtmlAttrs()} >
         <head>
-
+          
+          {false && (<link rel="stylesheet" href="/public/assets/styles/ar-helper.css" />)}
+            <ClientRouter />
             <!-- i18n support -->
             <I18nClient />
             <!-- Standard meta tags -->
@@ -77,7 +80,8 @@ const { description, title, preloadedImage } = Astro.props;
             </title>
 
             <!-- Sitewide Scripts -->
-            <script src="@js/nav.js"></script>
+           <script src="@js/nav.js"></script>
+
         </head>
         <body>
             <!--Screen reader skip main nav-->

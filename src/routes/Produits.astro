@@ -7,6 +7,8 @@ import { getCollection } from "astro:content";
 import {getOptimizedImage,getOptimizedCardImage} from "@js/utils"
 import landingImage from "@assets/images/hero.webp" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import ProductComponent from "@components/Products.vue";
+import { getLocalePath, t } from "i18n:astro";
+
 const optimizedImage = await getOptimizedImage(landingImage)
 
 const products = await getCollection("products");
@@ -68,8 +70,9 @@ async function processProductImages(products) {
 // Flag to track if data is ready
 const dataIsReady = products && productsProcessedImages;
 
-
-
+const pageTitle = t("products.title");
+const pageDescription = t("products.description");
+const loadingProductsText = t("home.loading_products");
 
 
 ---
@@ -77,8 +80,8 @@ const dataIsReady = products && productsProcessedImages;
 
 
 <BaseLayout
-  title="Produits"
-  description="Large choix de matériel informatique à Sidi Bel Abbès : ordinateurs, composants, périphériques et plus ! Trouvez la solution idéale pour vos besoins. Conseils personnalisés et prix compétitifs !"
+  title={pageTitle}
+  description={pageDescription}
   preloadedImage = {optimizedImage}
 >
 
@@ -94,7 +97,7 @@ const dataIsReady = products && productsProcessedImages;
     isSection={false} 
   />
 ) : (
-  <div class="loading-state">Loading products...</div>
+  <div class="loading-state">{loadingProductsText}</div>
 
 )}
  
