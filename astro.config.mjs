@@ -1,4 +1,5 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
+
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import vue from "@astrojs/vue";
@@ -8,8 +9,11 @@ import i18n from "@astrolicious/i18n";
 
 
 export default defineConfig({
+  image: {
+    service: passthroughImageService(),
+  },
 // update me!
-  site: "https://www.yourwebsite.com",
+  site: "https://www.infopc-sba.com",
 
   integrations: [icon(),
    sitemap({    
