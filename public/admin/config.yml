@@ -4,8 +4,8 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 local_backend: true
 media_folder: src/assets/images/products # Location where files will be stored in the repo - adjusted to store all images, including products and blogs.
-public_folder: src/assets/images/products  # Ensure that this path matches the media_folder path above.
-site_url: https://infopc.netlify.app/ # Displays a link to home page in the top-right corner of the CMS dashboard
+public_folder: ../../assets/images/products  # Ensure that this path matches the media_folder path above.
+site_url: https://infopc.sba.com # Displays a link to home page in the top-right corner of the CMS dashboard
 logo_url: https://i.postimg.cc/rwDzbVBm/Screen-Shot-2025-03-13-at-18-25-27-removebg-preview.png # Change URL to a link to the image you want to use, no file paths, must be a URL
 
 collections:
