@@ -4,13 +4,13 @@
   "name": "HP ELITEDESK 640 G10 ",
   "description": "\nHP EliteBook 640 G10 :\nCpu : i5-1335U\nGpu : Intel Iris Xe\nRam : 16GB DDR4\nStockage : 512GB M. 2\nÉcran : 14\" FHD (250–1000 nits) tactile\nRéseau : Wi-Fi 6E, Bluetooth 5.3, 4G LTE (option)",
   "price": 99000,
-  "image": "src/assets/images/products/picsart_25-07-28_10-34-37-421.jpg",
+  "image": "../../assets/images/products/picsart_25-07-28_10-34-37-421.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-28_10-35-09-764.jpg"
+      "image": "../../assets/images/products/picsart_25-07-28_10-35-09-764.jpg"
     },
     {
-      "image": "src/assets/images/products/picsart_25-07-28_10-35-28-904.jpg"
+      "image": "../../assets/images/products/picsart_25-07-28_10-35-28-904.jpg"
     }
   ],
   "tags": [

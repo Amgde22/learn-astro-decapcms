@@ -3,10 +3,10 @@
   "name": "UGREEN UASP USB 3.0 to SATA Hard Drive Adapter",
   "description": "UGREEN UASP USB 3.0 to SATA Hard Drive Adapter\nFor  2.5 SATA HDD and SATA\nSupport : SSD-HDD",
   "price": 1900,
-  "image": "src/assets/images/products/picsart_25-07-15_00-08-50-420.jpg",
+  "image": "../../assets/images/products/picsart_25-07-15_00-08-50-420.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-15_00-09-23-244.jpg"
+      "image": "../../assets/images/products/picsart_25-07-15_00-09-23-244.jpg"
     }
   ],
   "tags": [

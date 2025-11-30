@@ -6,10 +6,10 @@
   "tags": [
     "alimentation"
   ],
-  "image": "src/assets/images/products/picsart_25-07-14_19-30-20-387.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_19-30-20-387.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_17-40-21-835.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_17-40-21-835.jpg"
     }
   ]
 }

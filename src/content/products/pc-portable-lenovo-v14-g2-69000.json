@@ -3,13 +3,13 @@
   "name": "Pc portable Lenovo V14 G2",
   "description": "- Processeur : Intel i5 1135G7 2.40 Ghz\n- Cart Graphique : Intel Iris Xe\n- Ram : 16GB (2*8) 3200Mhz\n- Stockage : 256 GB Nvme M.2\n- Ecran : 14 Inch FHD",
   "price": 69000,
-  "image": "src/assets/images/products/picsart_25-07-14_18-05-56-935.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_18-05-56-935.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_18-06-32-912.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_18-06-32-912.jpg"
     },
     {
-      "image": "src/assets/images/products/picsart_25-07-14_18-01-54-192.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_18-01-54-192.jpg"
     }
   ],
   "tags": [

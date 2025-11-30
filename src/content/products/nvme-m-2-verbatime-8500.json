@@ -1,6 +1,6 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "image": "src/assets/images/products/picsart_25-07-14_17-40-44-454.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_17-40-44-454.jpg",
   "name": "Nvme M.2 VERBATIME",
   "description": "🔹Nvme M.2 512GB : 8500DA\n🔹Nvme M.2 1TB : 13500DA\n🔹 Vitesse de lecture/écriture rapide – jusqu'à 3500 Mo/s en lecture et 3000 Mo/s en écriture\n🔹 Interface NVMe 1.3 – transfert de données ultra-rapide comparé aux SSD SATA\n🔹 Format M.2 – design compact pour les configurations modernes\n🔹 Compatibilité étendue – compatible avec les cartes mères supportant M.2 NVMe\n🔹 Gestion thermique – dissipation thermique efficace pour éviter la surchauffe",
   "price": 8500,

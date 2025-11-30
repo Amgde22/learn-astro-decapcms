@@ -1,9 +1,9 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "image": "src/assets/images/products/picsart_25-07-14_17-31-29-630.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_17-31-29-630.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_17-30-47-330.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_17-30-47-330.jpg"
     }
   ],
   "name": "RTX 4060 Galax OC",

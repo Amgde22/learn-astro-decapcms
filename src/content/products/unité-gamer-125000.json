@@ -3,10 +3,10 @@
   "name": "Unité GAMER RTX 4060",
   "description": "- Processeur : RYZEN 5 5600X 4.6Ghz 6C/12T 35MO\n- RAM : 32GO DDR4 2X16GO CUSU\n- Carte Mère : ASUS PRIME A520M-K AM4\n- Carte Graphique : GALAX RTX3060 8GB 1-CLICK OC 2X V2\n- Stockage : SSD VERBATIM 512GB VI550 S3 SATA\n- Alimentation : THERMALETAKE 650WATTS \n- Boîtier : BOITIER AURA CS5 ARGB\n- Ventilateur : VENTILO AMD",
   "price": 152000,
-  "image": "src/assets/images/products/picsart_25-07-14_17-41-32-763.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_17-41-32-763.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_17-41-53-404.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_17-41-53-404.jpg"
     }
   ],
   "tags": [

@@ -3,10 +3,10 @@
   "name": "HP Elitedesk 800 G3 Mini",
   "description": "- Processeur : I5-7400T 2.4Ghz\n- RAM : 8GB DDR4 2400Mhz\n- Stockage : 256 GB SSD\n ",
   "price": 32000,
-  "image": "src/assets/images/products/img_20250714_124949.jpg",
+  "image": "../../assets/images/products/img_20250714_124949.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/img_20250714_124937.jpg"
+      "image": "../../assets/images/products/img_20250714_124937.jpg"
     }
   ],
   "tags": [

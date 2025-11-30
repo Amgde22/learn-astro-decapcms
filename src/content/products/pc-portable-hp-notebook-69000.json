@@ -3,13 +3,13 @@
   "name": "Pc Portable HP Notebook",
   "description": "- Processeur : I7-7500U 2.70Ghz-2.90Ghz\n- Cart Graphique : Intel HD 620 + AMD Radeon R7 M440\n- Ram : 16GB 2666Mhz\n- Stockage : 512 GB SSD\n- Ecran : 15.6 Inch FHD",
   "price": 69000,
-  "image": "src/assets/images/products/picsart_25-07-14_18-03-26-549.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_18-03-26-549.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_18-02-56-580.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_18-02-56-580.jpg"
     },
     {
-      "image": "src/assets/images/products/picsart_25-07-14_18-03-40-338.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_18-03-40-338.jpg"
     }
   ],
   "tags": [

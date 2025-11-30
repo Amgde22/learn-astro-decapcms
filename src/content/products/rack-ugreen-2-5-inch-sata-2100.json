@@ -3,10 +3,10 @@
   "name": "Rack UGREEN 2.5 Inch SATA",
   "description": "- Rack UGREEN 2.5 Inch SATA Hard Drive Enclosure\n- Speed : High-speed Transmission 5 GB \n- Support : SSD - HDD",
   "price": 2100,
-  "image": "src/assets/images/products/picsart_25-07-15_00-07-06-359.jpg",
+  "image": "../../assets/images/products/picsart_25-07-15_00-07-06-359.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-15_00-07-55-301.jpg"
+      "image": "../../assets/images/products/picsart_25-07-15_00-07-55-301.jpg"
     }
   ],
   "tags": [

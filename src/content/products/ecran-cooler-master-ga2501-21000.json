@@ -1,9 +1,9 @@
 {
   "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments",
-  "image": "src/assets/images/products/picsart_25-07-14_17-27-33-347.jpg",
+  "image": "../../assets/images/products/picsart_25-07-14_17-27-33-347.jpg",
   "images": [
     {
-      "image": "src/assets/images/products/picsart_25-07-14_17-28-55-131.jpg"
+      "image": "../../assets/images/products/picsart_25-07-14_17-28-55-131.jpg"
     }
   ],
   "name": "Ecran COOLER MASTER GA2501",
