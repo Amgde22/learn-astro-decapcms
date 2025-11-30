@@ -1,6 +1,9 @@
 {
     "Accueil":"Accueil",
     "Produits":"Produits",
+    "En stock":"En stock",
+    "Hors stock":"Hors stock",
+    "dzd":"DZD",
     "home": {
         "title": "Page d'accueil",
         "description": "Sidi Bel Abbès Solutions Informatiques : Réparation PC, optimisation système & consulting IT. +17 ans d'expérience ! Service rapide et fiable. Vente matériel, conseils d'experts et plus ! Appelez le (0770662425) ou visitez-nous !",
@@ -23,6 +26,7 @@
             "accessoires": "accessoires",
             "écrans": "écrans",
             "réseau": "réseau",
+            "Réseau": "réseau",
             "stockage": "stockage",
             "ventilo": "ventilo",
             "Carte Graphique": "Carte Graphique",

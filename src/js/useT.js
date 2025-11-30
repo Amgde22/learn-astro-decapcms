@@ -32,7 +32,11 @@ export default function useT(defaultKey,lang){
 
         const prop = paths.reduce((acc,currentValue)=>{
         if (currentValue == false) return acc 
-        return acc[currentValue]
+        if(acc[currentValue] == undefined ){
+            console.warn("value in get T is undefined " , {path:paths , value:acc[currentValue] })
+        }
+        return  acc[currentValue] 
+
         },locale)
 
         return prop

@@ -2,7 +2,7 @@
   <div class="product-card" @click="openDialog">
     <!-- In Stock Pill for Card - Absolute Positioned -->
     <span class="in-stock-pill in-stock-pill--card" :class="stockStatus.class" v-if="stockStatus">
-      {{ stockStatus.text }}
+      {{ t(stockStatus.text) }}
     </span>
 
     <!-- Show loading state or placeholder while image loads -->
@@ -41,7 +41,7 @@
 
     <div class="product-tags">
       <p v-for="tag in tags"
-       class="tag">{{tag}}</p>
+       class="tag">{{t(`products.tags.${tag}`)}}</p>
 
     </div>
     <p class="product-description ">{{ description }}
@@ -169,6 +169,8 @@
 
 import { ref, computed, watch, onMounted, toValue } from 'vue';
 import { lock, unlock } from 'tua-body-scroll-lock'
+import useT from "@js/useT"
+
 import placeHolderImage from "@assets/images/placeholder.jpg";
 // assets
 import data from "@data/client.json"
@@ -200,6 +202,7 @@ const props = defineProps({
 /* ==========================================================================
    Reactive State
    ========================================================================== */
+const {t} = useT()
 
 const modalVisible = ref(false);
 const isLoading = ref(!props.productImages?.image?.src);
@@ -238,7 +241,7 @@ const tags = computed(()=>{
 })
 
 // Enhanced price formatter for Vue
-const formatCurrency = (value, currency = 'DZD', locale = 'en-US') => {
+const formatCurrency = (value, currency = t('dzd'), locale = 'en-US') => {
   if (value === null || value === undefined) return null;
   
   // Handle both number and string inputs
