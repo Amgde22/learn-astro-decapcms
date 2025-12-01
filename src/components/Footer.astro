@@ -8,6 +8,7 @@ const currentYear = getCurrentYear()
 const {mapLink} = client.address
 
 const footer = t("footer",{ returnObjects: true })
+
 const infoHeading = footer.information
 const servicesHeading = footer.services
 const systemOptimization = footer.system_optimization
@@ -45,7 +46,7 @@ const email = footer.email
             navData.map((entry) => (
               <li class="cs-li">
                 <a href={entry.url}>
-                  {entry.key}
+                  {t(entry.key)}
                 </a>
               </li>
             ))
