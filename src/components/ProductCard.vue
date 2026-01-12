@@ -594,7 +594,7 @@ onMounted(() => {
   left: 10px; /* Adjust as needed for padding from left */
   font-size: 1.1em; /* Same size as .tag */
   padding: 0.2em 1.25em; /* Same padding as .tag */
-  z-index: 10; /* Ensure it's above other card content */
+  z-index: 1; /* Ensure it's above other card content */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: add a subtle shadow for prominence */
 }
 

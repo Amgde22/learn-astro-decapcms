@@ -22,50 +22,7 @@ const products = await getCollection("products")
   })
 )
 
-// const products = [
-//   {
-//     "data": {
-//       "name": "PC Gamer Ultra 2025",
-//       "description": "PC Gamer puissant avec les dernières composantes pour des performances optimales en jeu",
-//       "price": 250000,
-//       "offer": 300000,
-//       "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg",
-//       "images": [
-//         { "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg" },
-//         { "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg" }
-//       ],
-//       "tags": ["ordinateur de bureau", "gaming", "Carte Graphique"],
-//       "in_stock": "true",
-//       "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments"
-//     }
-//   },
-//   {
-//     "data": {
-//       "name": "Clavier Mécanique RGB",
-//       "description": "Clavier mécanique avec rétroéclairage RGB personnalisable et touches antidérapantes",
-//       "price": 12000,
-//       "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg",
-//       "tags": ["clavier", "accessoires", "gaming"],
-//       "in_stock": "true",
-//       "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments"
-//     }
-//   },
-//   {
-//     "data": {
-//       "name": "Écran 27 pouces 144Hz",
-//       "description": "Écran de gaming de 27 pouces avec fréquence de 144Hz et temps de réponse de 1ms",
-//       "price": 85000,
-//       "offer": 95000,
-//       "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg",
-//       "images": [
-//         { "image": "https://i.pinimg.com/236x/c0/f6/86/c0f686e71d86e987e1c0d6bcdc53eee2.jpg" }
-//       ],
-//       "tags": ["écrans", "gaming", "accessoires"],
-//       "in_stock": "false",
-//       "instructions": "**Légende des champs:**\n- ✅ indique un champ obligatoire\n- ❓ indique un champ optionnel\n- 🔹 indique que vous pouvez ajouter plusieurs éléments"
-//     }
-//   }
-// ]
+
 const productsProcessedImages = await processProductImages(products)
 
 //  product </ kayn
@@ -157,9 +114,9 @@ const loadingProductsText = t("home.loading_products");
 )}
 
 <div class="center">
-  <sl-button class="button" variant="neutral" size="large" href="/Produits">
+  <sl-button class="button" variant="neutral" size="large" href={getLocalePath("/produits")} >
     {discoverMoreText} 
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
+    <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
       <defs>
         <mask id="ipSRightC0">
           <g fill="none" stroke-linejoin="round" stroke-width="4">
@@ -204,6 +161,9 @@ const loadingProductsText = t("home.loading_products");
     gap: 8px;
   }
 
+  :global([dir="rtl"]) .chevron-icon{
+    rotate:180deg;
+  }
 
   body.dark-mode{
     .button::part(base){
