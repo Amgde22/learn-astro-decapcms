@@ -53,19 +53,13 @@
         <span class="product-offer-price">{{formattedPromotionPrice}}</span>
       </span>
       
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-        <defs>
-          <mask id="ipSMoreTwo0">
-            <g fill="none">
-              <path fill="#fff" stroke="#fff" stroke-linejoin="round" stroke-width="4" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z" />
-              <circle cx="14" cy="24" r="3" fill="#000" />
-              <circle cx="24" cy="24" r="3" fill="#000" />
-              <circle cx="34" cy="24" r="3" fill="#000" />
-            </g>
-          </mask>
-        </defs>
-        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSMoreTwo0)" />
-      </svg>
+<!-- Inside .product-price-and-button -->
+<div class="learn-more-wrapper">
+  <span class="learn-more-text">{{ t('products.learn_more') }}</span>
+  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7" />
+  </svg>
+</div>
     </div>
   </div>
 
@@ -512,20 +506,6 @@ onMounted(() => {
   font-size: 1.35em;
   font-size: clamp(19px, 16.21px + 0.99vw, 24px);
   font-weight: bolder;
-
-  & .product-offer-price{
-    font-size: .8em;
-    position: relative;
-    &::before{
-      content: "";
-      position: absolute;
-      height: 2px;
-      width: 100%;
-      top: 0;bottom: 0;
-      background-color: currentColor;
-      margin: auto;
-    }
-  }
 }
 
 .icon {
@@ -852,5 +832,190 @@ onMounted(() => {
 
 
 
+/* ==========================================================================
+   Product Card Styles (Modernized)
+   ========================================================================== */
 
+   .product-card {
+  font-size: 0.8em;
+  background-color: white;
+  border-radius: @border-radius;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  
+  // Softer, more modern shadow
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+
+    .learn-more-text {
+      color: var(--primary);
+    }
+    .icon {
+      transform: translateX(4px);
+    }
+  }
+}
+
+/* Image Container Polish */
+.product-image-container {
+  position: relative;
+  border-radius: @border-radius;
+  aspect-ratio: 16/9;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background-color: #f8f9fa; // Light placeholder color
+
+  .product-image {
+    height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); // Makes product "pop" off the blur
+  }
+}
+
+/* Tag Polish (Outline Style) */
+.product-tags {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  & .tag {
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 10px;
+    border-radius: 6px;
+    
+    // Transparent style
+    background-color: transparent;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    opacity: 0.85;
+  }
+}
+
+/* Price Polish */
+.product-price {
+  display: flex;
+  flex-direction: column; // Stack prices for better vertical alignment
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--headerColor);
+
+  .product-offer-price {
+    font-size: 0.75em;
+    font-weight: 500;
+    color: #888; // Muted color
+    text-decoration: line-through;
+    opacity: 0.7;
+    margin-top: 2px;
+
+    &:empty{
+      display: none;
+    }
+  }
+}
+
+/* Learn More CTA */
+.learn-more-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  .learn-more-text {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #666;
+    transition: color 0.2s ease;
+  }
+
+  .icon {
+    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+    color:white;
+    padding:2px;
+    background-color: var(--primary);
+    border-radius: 999px;
+  }
+
+  :global([dir="rtl"]) &{
+    display: none;
+
+  }
+}
+:global([dir="rtl"]) .learn-more-wrapper .icon {
+  display: none;
+  }
+/* ==========================================================================
+   Dialog / Modal Polish
+   ========================================================================== */
+
+.dialog-content {
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 50%; // Circular
+  
+  .close-icon {
+    color: #333; // Darker icon for white button
+  }
+
+  &:hover {
+    background-color: var(--danger);
+    .close-icon { color: white; }
+  }
+}
+
+/* ==========================================================================
+   Dark Mode Adjustments
+   ========================================================================== */
+
+body.dark-mode {
+  .product-card {
+    background-color: #1e293b; // Slate 800
+    border-color: rgba(255, 255, 255, 0.1);
+    
+    .product-name, .learn-more-text { color: white; }
+    .product-price { color: var(--sl-color-sky-400); }
+    
+    .tag {
+      border-color: var(--sl-color-sky-500);
+      color: var(--sl-color-sky-500);
+    }
+    
+    .product-offer-price { color: rgba(255,255,255,0.4); }
+  }
+  
+  .dialog-content {
+    background-color: #0f172a; // Slate 900
+  }
+  
+  .dialog-product-informarion-container .bottom-section {
+    background-color: #1e293b;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+}
 </style>

@@ -33,7 +33,8 @@
             "alimentation": "alimentation",
             "RAM": "RAM",
             "processeur": "processeur"
-          }
+        },
+        "learn_more":"Découvrir"
 
     },
     "error404": {
