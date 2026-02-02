@@ -25,8 +25,6 @@ const products = await getCollection("products")
 
 const productsProcessedImages = await processProductImages(products)
 
-//  product </ kayn
-
 
 /**
  * Processes and optimizes images for a collection of products
@@ -40,42 +38,36 @@ async function processProductImages(products) {
   if (!Array.isArray(products)) {
     throw new TypeError('Products must be an array');
   }
-  
-  const processedImages = {};
-  
-  try {
-    // Use Promise.all to properly wait for all async operations to complete
-    await Promise.all(
-      products.map(async ({ id, data }) => {
-        if (!id || !data?.image) {
-          console.warn(`Skipping product with invalid data: ${id}`);
-          return;
-        }
-        
-        try {
-          // Optimize the main image
-          const optimizedMainImage = await getOptimizedCardImage(data.image);
-          
-          // Store the optimized image in the result object
-          processedImages[id] = {
-            image: optimizedMainImage
-          };
-        } catch (imageError) {
-          console.error(`Failed to optimize image for product ${id}:`, imageError);
-          // Store a placeholder or fallback for failed images
-          processedImages[id] = {
-            image: null,
-            error: 'Image optimization failed'
-          };
-        }
-      })
-    );
-    
-    return processedImages;
-  } catch (error) {
-    console.error('Error processing product images:', error);
-    throw new Error('Failed to process product images: ' + error.message);
-  }
+
+  const imageEntries = await Promise.all(products.map( async({id,data})=>{
+
+    try{    
+      // optimize main image
+     const optimizedMainImage = await getOptimizedCardImage(data.image);
+
+      // optimize carousel images
+      const optimizedCarouselImages = data.images ? // because its an optional field
+        await Promise.all(data.images.map(async (img)=>{
+          return  getOptimizedCardImage(img.image); //yes 
+        })) 
+        : []
+      // make the entry
+      const imageEntry = [id , {
+        image:optimizedMainImage ,
+        images:optimizedCarouselImages,
+        error: null
+      }]
+      return imageEntry
+    } catch (err) {
+        console.error(`❌ Optimization failed for [${id}]:`, err.message);
+        return [id, { image: null, images: [], error: err.message }];
+      }
+
+  }))
+
+
+  // turn array of [id,entry] to an object
+  return Object.fromEntries(imageEntries)
 }
 
 // Flag to track if data is ready

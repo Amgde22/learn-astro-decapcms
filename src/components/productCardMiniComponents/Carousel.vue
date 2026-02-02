@@ -6,13 +6,14 @@
          ref="carousel"
          class="carousel"
          @sl-slide-change="handleSlideChange"
-         @click="openZoomModal"
+         
          >
 
 
           <sl-carousel-item
             v-for="(image, index) in carouselImages" :key="index"
             class="carousel-product-image"
+            @click="openZoomModal"
              >
             <img
             loading="lazy"

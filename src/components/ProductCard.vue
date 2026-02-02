@@ -317,38 +317,13 @@ function handleImageUpdate(optimizedImages) {
 }
 // Update carousel images
 function updateCarouselImages(optimizedImages) { 
+  // Now you don't have to manually check additionalImages
+  // Just combine the main image and the pre-optimized carousel
+  carouselImages.value = [
+    optimizedImages.image, 
 
-  // Start with main image
-  const images = [];
-  const optimized_mainImage = optimizedImages.image
-
-  if (optimizedImages && optimizedImages.image && optimizedImages.image.src) {
-    images.push(optimized_mainImage)
-  }
-
-
-  
-  // Add additional images if available
-  if (additionalImages && Array.isArray(additionalImages)) {
-    additionalImages.forEach(entry => {
-
-      const img = entry.image
-      if (img && img.src) {
-        images.push(img);
-      }
-      // image src is a url
-      else if(typeof img == "string"){
-        images.push({src:img});
-      }
-
-    });
-  }
-// if(name == "Aweasome pc"){
-//   console.log(images.map((image)=>image.src));
-// }
-
-
-  carouselImages.value = images;
+    ...(optimizedImages.images || [])
+  ].filter(Boolean);
 }
 
 // Handle image loading errors
