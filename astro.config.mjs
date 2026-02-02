@@ -9,10 +9,6 @@ import i18n from "@astrolicious/i18n";
 
 
 export default defineConfig({
-  image: {
-    service: passthroughImageService(),
-  },
-// update me!
   site: "https://www.infopc-sba.com",
 
   integrations: [icon(),
