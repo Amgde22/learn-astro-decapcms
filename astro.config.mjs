@@ -1,44 +1,46 @@
 import { defineConfig, passthroughImageService } from "astro/config";
-
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import vue from "@astrojs/vue";
-
 import i18n from "@astrolicious/i18n";
 
-
+// This checks if we are NOT running on Netlify
+const isLocal = process.env.NETLIFY !== "true";
 
 export default defineConfig({
+  // Only apply passthroughImageService if we are local
+  image: isLocal ? { service: passthroughImageService() } : undefined,
+
   site: "https://www.infopc-sba.com",
 
-  integrations: [icon(),
-   sitemap({    
+  integrations: [
+    icon(),
+    sitemap({
       i18n: {
-        defaultLocale: 'ar', // All urls that don't contain `es` or `fr` after `"https://www.yourwebsite.com/"` will be treated as default locale, i.e. `en`
+        defaultLocale: 'ar',
         locales: {
-          // key/value pairs of all languages supported
-          ar: 'ar-DZ', // The `defaultLocale` value must be present in `locales` keys
+          ar: 'ar-DZ',
           fr: 'fr-FR',
         },
       },
-    filter: (page) => !page.includes("/admin"),
-    changefreq: "weekly",
-    priority: 0.7,
-   }),
-   i18n({
-    defaultLocale: "ar",
-    locales: ["ar", "fr"],
-    client: {
-      data: true,
-      paths: true,
-    },
-  }), 
-  vue({
-    template: {
-      compilerOptions: {
-        isCustomElement: (tag) => tag.includes('-'),
+      filter: (page) => !page.includes("/admin"),
+      changefreq: "weekly",
+      priority: 0.7,
+    }),
+    i18n({
+      defaultLocale: "ar",
+      locales: ["ar", "fr"],
+      client: {
+        data: true,
+        paths: true,
       },
-    },
-  })],
-
+    }),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-'),
+        },
+      },
+    })
+  ],
 });
