@@ -953,15 +953,8 @@ onMounted(() => {
     background-color: var(--primary);
     border-radius: 999px;
   }
-
-  :global([dir="rtl"]) &{
-    display: none;
-
-  }
 }
-:global([dir="rtl"]) .learn-more-wrapper .icon {
-  display: none;
-  }
+
 /* ==========================================================================
    Dialog / Modal Polish
    ========================================================================== */
