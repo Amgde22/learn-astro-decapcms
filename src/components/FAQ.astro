@@ -9,11 +9,13 @@ const faqA1 = faq.a1
 const faqQ2 = faq.q2
 const faqA2 = faq.a2
 const faqQ3 = faq.q3
-const faqA3Part1 = faq.a3_part1
-const faqA3Part2 = faq.a3_part2
-const faqA3Part3 = faq.a3_part3
+const faqA3 = faq.a3
 const faqQ4 = faq.q4
-const faqA4 = faq.a4
+const faqA4Part1 = faq.a4_part1
+const faqA4Part2 = faq.a4_part2
+const faqA4Part3 = faq.a4_part3
+const faqQ5 = faq.q5
+const faqA5 = faq.a5
 ---
 
 <section id="faq-1741">
@@ -27,11 +29,11 @@ const faqA4 = faq.a4
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
         <!-- Active class added as default -->
-      <li class="cs-faq-item active">
+        <li class="cs-faq-item active">
           <button class="cs-button">
-            <span class="cs-button-text">
+            <h2 class="cs-button-text">
               {faqQ1}
-            </span>
+            </h2>
           </button>
           <p class="cs-item-text">
             {faqA1}
@@ -54,8 +56,7 @@ const faqA4 = faq.a4
             </span>
           </button>
           <p class="cs-item-text">
-            {faqA3Part1}<a href="tel:+213770662425">(0770662425)</a>{faqA3Part2}<a href="mailto:tester.infopc@gmail.com">tester.infopc@gmail.com</a>{faqA3Part3}<a href="https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5">Google Maps</a>
-            
+            {faqA3}
           </p>
         </li>
         <li class="cs-faq-item">
@@ -65,7 +66,17 @@ const faqA4 = faq.a4
             </span>
           </button>
           <p class="cs-item-text">
-            {faqA4}
+            {faqA4Part1}<a href="tel:+213770662425">(0770662425)</a>{faqA4Part2}<a href="mailto:tester.infopc@gmail.com">tester.infopc@gmail.com</a>{faqA4Part3}<a href="https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5">Google Maps</a>
+          </p>
+        </li>
+        <li class="cs-faq-item">
+          <button class="cs-button">
+            <span class="cs-button-text">
+              {faqQ5}
+            </span>
+          </button>
+          <p class="cs-item-text">
+            {faqA5}
           </p>
         </li>
       </ul>
@@ -75,7 +86,7 @@ const faqA4 = faq.a4
 
 <!-- Instead of loading a <script>  tag in BaseLayout, we use a scoped style in this component -->
 <!-- Astro will process this script automatically. -->
-<!-- The processed script will be injected into your page’s <head> with type="module" -->
+<!-- The processed script will be injected into your page's <head> with type="module" -->
 <!-- As a consequence, there is no need to use the defer attribute when loading a module script because modules are deferred automatically. -->
 
 <script>
@@ -147,11 +158,15 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
         &.active {
           .cs-button {
             background-color: var(--secondary);
-            color: var(--bodyTextColorWhite);
+
 
             &:before {
               background-color: var(--bodyTextColorWhite);
               transform: rotate(315deg);
+            }
+            .cs-button-text{
+            color: var(--bodyTextColorWhite) !important;
+
             }
 
             &:after {
@@ -227,6 +242,9 @@ document.addEventListener('astro:page-load', () => { // Makes the script availab
         }
       }
 
+      .cs-button-text{
+        font-size: 1.2em;
+      }
       .cs-item-text {
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);

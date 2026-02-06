@@ -54,16 +54,18 @@
     "faq": {
         "topper": "Tout Savoir",
         "title": "Questions fréquemment posées par nos clients",
-        "q1": "Puis-je faire améliorer les performances de mon ordinateur chez vous?",
-        "a1": "Absolument. Nous proposons des optimisations de système, des mises à niveau de mémoire (RAM), l'installation de disques SSD plus rapides, et bien plus encore.",
-        "q2": "Vendez-vous des ordinateurs et des pièces détachées?",
-        "a2": "Oui! Nous avons une large sélection d'ordinateurs neufs et d'occasion, ainsi que tous les composants nécessaires pour améliorer ou réparer votre machine.",
-        "q3": "Comment puis-je vous contacter et où êtes-vous situés?",
-        "a3_part1": "Vous pouvez nous contacter par téléphone au ",
-        "a3_part2": ", par e-mail à ",
-        "a3_part3": ", ou visiter notre magasin à ",
-        "q4": "Combien coûte une réparation ou une mise à niveau?",
-        "a4": "Les prix varient en fonction de la complexité du problème et des pièces nécessaires. Contactez-nous pour un devis gratuit et sans engagement."
+        "q1": "Pourquoi choisir InfoPC Sidi Bel Abbès ?",
+        "a1": "Le problème courant à Sidi Bel Abbès est que les pièces détachées pour ordinateurs portables sont très rares. Quand les clients ont besoin de remplacer un connecteur de charge, une batterie neuve, ou toute autre pièce, ils sont obligés de se déplacer vers d'autres wilayas comme Oran ou Alger, ce qui leur coûte du temps et de l'argent. Chez InfoPC, nous avons résolu ce problème en maintenant un stock important et spécialisé de pièces détachées pour ordinateurs portables - tout ce dont vous avez besoin est disponible ici à Sidi Bel Abbès. De plus, nous proposons des pièces pour tous types d'appareils : ordinateurs de bureau, composants, et accessoires. Plus besoin de voyager !",
+        "q2": "Puis-je améliorer les performances de mon ordinateur chez vous ?",
+        "a2": "Absolument. Nous proposons des optimisations système, des mises à niveau de RAM, l'installation de SSD plus rapides, et bien plus encore.",
+        "q3": "Vendez-vous des ordinateurs et des pièces détachées ?",
+        "a3": "Oui ! Nous avons une large gamme d'ordinateurs neufs et d'occasion, ainsi que tous les composants nécessaires pour améliorer ou réparer votre appareil.",
+        "q4": "Comment vous contacter et où se trouve votre magasin ?",
+        "a4_part1": "Vous pouvez nous joindre par téléphone au ",
+        "a4_part2": ", par email à ",
+        "a4_part3": ", ou visiter notre magasin au ",
+        "q5": "Combien coûte une réparation ou une mise à niveau ?",
+        "a5": "Les prix varient selon la complexité du problème et les pièces nécessaires. Contactez-nous pour un devis gratuit et sans engagement."
     },
     "footer": {
         "information": "Information",
@@ -87,8 +89,8 @@
         "need_help": "Besoin d'Aide ?"
     },
     "hero": {
-        "title": "Votre Informatique, Simplifiée",
-        "description": "La seule véritable boutique tout-en-un PC de Sidi Bel Abbès",
+        "title": "Votre magasin tech de proximité",
+        "description": "Réparation, vente et conseils au cœur de Sidi Bel Abbès",
         "cta": "Visitez-nous!",
         "service1_title": "Optimisation Système",
         "service2_title": "Consultation Info",
