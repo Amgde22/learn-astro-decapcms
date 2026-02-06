@@ -53,11 +53,13 @@ const {mapLink} = address
                 {heroDescription}
             </h1>
             <div class="footer">
-                <a href={mapLink} target="_blank" class="cta cs-button-solid">
-                <Icon class={"flex-0"} name="mdi--location" size={25}  />
-                    {heroCta}
-                </a>
-            <Socials />
+                <div class="cta-wrapper">
+                    <a href={mapLink} target="_blank" class="cta cs-button-solid">
+                        <Icon class={"flex-0"} name="mdi--location" size={25}  />
+                        {heroCta}
+                    </a>
+                </div>
+                <Socials />
             </div>
 
 
@@ -229,6 +231,32 @@ const {mapLink} = address
             color: #fff;
         }
 
+        .cta-wrapper {
+            position: relative;
+            width: 100%;
+            padding: 3px;
+            border-radius: 4px;
+            background: linear-gradient(
+                90deg,
+                #00d4ff 0%,
+                #0066ff 25%,
+                #6600ff 50%,
+                #ff00ff 75%,
+                #00d4ff 100%
+            );
+            background-size: 200% 100%;
+            animation: rgbBorder 4s linear infinite;
+            
+            @keyframes rgbBorder {
+                0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 200% 0%;
+                }
+            }
+        }
+
         .cs-button-solid {
             align-self: center;
             display: flex;
@@ -245,16 +273,15 @@ const {mapLink} = address
             background-color: var(--medium);
             box-shadow: var(--shadow-elevation-medium);
             position: relative;
-
-
             width: 100%;
+            border-radius: 2px;
 
             svg {
-
                 width:20px;
                 height:20px;
                 translate:0 4px;
             }
+            
             &:before {
                 content: '';
                 position: absolute;
@@ -267,11 +294,11 @@ const {mapLink} = address
                 left: 0;
                 z-index: -1;
                 transition: width .3s;
+                border-radius: 2px;
             }
 
             &:hover {
                 box-shadow: none;
-                scale: 0.95;
                 &:before {
                     width: 100%;
                 }
@@ -410,7 +437,8 @@ const {mapLink} = address
         .cs-item {
             grid-column: span 3;
         }
-        .cs-button-solid {
+        
+        .cta-wrapper {
             max-width: 250px;
         }
 
