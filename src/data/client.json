@@ -1,18 +1,22 @@
 {
-	"name": "Info Pc Sba",
+	"name": "INFO PC SBA",
 	"email": "tester.infopc@gmail.com",
 	"whatsappLink":"https://wa.me/213770662425",
 
-	"phoneForTel": "0770662425",
+	"phoneForTel": "+213770662425",
 	"phoneFormatted": "0770662425",
 	"phoneForTel2":"0560863370",
 	"address": {
 		"lineOne": "N 50c Cite 345 Lgt",
 		"lineTwo": "Al-wiam Sidi Jilali",
-		"city": "Sidi Bel Abbés",
+		"city": "Sidi Bel Abbès",
 		"state": "",
-		"zip": "",
+		"zip": "22000",
 		"mapLink": "https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5"
 	},
-	"domain": "www.infopc-sba.com"
+	"domain": "infopc-sba.com",
+	"geo": {
+		"latitude": 35.212359,
+		"longitude": -0.62672
+	}
 }

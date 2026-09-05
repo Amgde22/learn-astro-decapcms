@@ -11,7 +11,7 @@ export default defineConfig({
   // Only apply passthroughImageService if we are local
   image: isLocal ? { service: passthroughImageService() } : undefined,
 
-  site: "https://www.infopc-sba.com",
+  site: "https://infopc-sba.com",
 
   integrations: [
     icon(),

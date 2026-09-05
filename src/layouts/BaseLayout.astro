@@ -19,8 +19,88 @@ import "@shoelace-style/shoelace/dist/themes/light.css";
 
 
 const { description, title, preloadedImage } = Astro.props;
- 
 
+// Detect the homepage in every locale (/, /fr, /fr/) so the local-SEO title template applies to both language versions
+const isHomePage = ["/", "/fr", "/fr/"].includes(Astro.url.pathname);
+
+// ---------------------------------------------------------------
+// LocalBusiness (ComputerStore) structured data for Google Maps /
+// local pack rankings. NAP (Name, Address, Phone) mirrors the
+// Google Business Profile listing EXACTLY: "INFO PC SBA",
+// N 50c Cite 345 Lgt Al-wiam Sidi Jilali, Sidi Bel Abbès, +213 770 66 24 25
+// Opening hours mirror the GBP listing: Sat–Thu 8:30–20:00, Friday closed.
+// ---------------------------------------------------------------
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ComputerStore",
+  "@id": `https://${client.domain}/#localbusiness`,
+  "name": client.name,
+  "url": `https://${client.domain}/`,
+  "image": `https://${client.domain}/assets/images/products/placeholder/logo.png`,
+  "logo": `https://${client.domain}/assets/images/products/placeholder/logo.png`,
+  "telephone": client.phoneForTel,
+  "email": client.email,
+  "priceRange": "$$",
+  "currenciesAccepted": "DZD",
+  "paymentAccepted": "Cash",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": `${client.address.lineOne} ${client.address.lineTwo}`,
+    "addressLocality": client.address.city,
+    "postalCode": client.address.zip,
+    "addressCountry": "DZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": client.geo.latitude,
+    "longitude": client.geo.longitude
+  },
+  "hasMap": client.address.mapLink,
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "08:30",
+      "closes": "20:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/infopc_sba/",
+    "https://t.me/infopcsba"
+  ],
+  "areaServed": {
+    "@type": "City",
+    "name": "Sidi Bel Abbès"
+  },
+  "description": "Magasin informatique à Sidi Bel Abbès : vente de PC, composants et accessoires, réparation PC avec diagnostic gratuit, optimisation système et conseils experts. Plus de 17 ans d'expérience. Pièces rares en stock — plus besoin de voyager à Oran.",
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Réparation PC",
+        "description": "Diagnostic gratuit, réparations rapides et fiables d'ordinateurs de bureau et portables à Sidi Bel Abbès. Payez seulement si c'est réparé.",
+        "areaServed": "Sidi Bel Abbès"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Vente Matériel Informatique",
+        "description": "PC gamer, ordinateurs portables, cartes graphiques (NVIDIA/AMD), SSD, RAM, alimentations, claviers, souris, écrans et accessoires."
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Optimisation Système et Consulting IT",
+        "description": "Mises à niveau RAM/SSD, optimisation de performances et conseils experts pour vos projets informatiques."
+      }
+    }
+  ]
+});
 ---
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
 <html {...getHtmlAttrs()} >
@@ -37,8 +117,13 @@ const { description, title, preloadedImage } = Astro.props;
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content={description}>
-            <meta name="keywords" content="">
             <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
+
+            <!-- Local SEO: geo meta tags matching the Google Business Profile location -->
+            <meta name="geo.region" content="DZ-22">
+            <meta name="geo.placename" content="Sidi Bel Abbès">
+            <meta name="geo.position" content={`${client.geo.latitude};${client.geo.longitude}`}>
+            <meta name="ICBM" content={`${client.geo.latitude}, ${client.geo.longitude}`}>
 
 		<I18nHead />
 
@@ -49,9 +134,10 @@ const { description, title, preloadedImage } = Astro.props;
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
+            <meta property="og:site_name" content={client.name} />
             <meta property="og:url" content={`https://${client.domain}${Astro.url.pathname}`} />
-            <meta property="og:image" content="assets/images/products/placeholder/logo.png" />
-            <meta property="og:image:secure_url" content="assets/images/products/placeholder/logo.png" />
+            <meta property="og:image" content={`https://${client.domain}/assets/images/products/placeholder/logo.png`} />
+            <meta property="og:image:secure_url" content={`https://${client.domain}/assets/images/products/placeholder/logo.png`} />
     
             <!--Favicons-->
             <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
@@ -69,19 +155,15 @@ const { description, title, preloadedImage } = Astro.props;
             About Page - About us | Painters and Co.
             -->
             <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
-            }
+                {isHomePage
+                    ? `${title} | ${client.name} | ${client.address.city}`
+                    : `${title} | ${client.name}`}
             </title>
 
-            <!-- Sitewide Scripts -->
+            <!-- LocalBusiness structured data (matches the Google Business Profile NAP exactly) -->
+           <script is:inline type="application/ld+json" set:html={localBusinessSchema} />
+
+           <!-- Sitewide Scripts -->
            <script src="@js/nav.js"></script>
 
            <!-- meta pixel -->
@@ -120,39 +202,6 @@ src="https://www.facebook.com/tr?id=1376904244235037&ev=PageView&noscript=1"
         </body>
 
 </html>
-<script is:inline type="application/ld+json" data-ai-context="true">
-  {
-  "@context": "https://schema.org",
-  "@type": "ComputerStore",
-  "name": "Votre Magasin de PC",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Sidi Bel Abbès",
-    "addressCountry": "DZ"
-  },
-  "description": "Le SEUL magasin à Sidi Bel Abbès qui importe des composants PC directement. Plus de 17 ans d'existence. Stocke des articles rares indisponibles localement : RTX 4090, kits de refroidissement liquide, RAM DDR5, cartes mères haut de gamme, etc. Auparavant, les clients se déplaçaient à Oran ou dans d'autres wilayas pour des réparations ou des pièces — problème désormais résolu localement.",
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Product",
-      "name": "Accessoires PC et Équipement de Jeu",
-      "description": "Tout : câbles HDMI, hubs USB, alimentations, SSD, ventilateurs, pâte thermique, tapis de souris, webcams, casques, claviers mécaniques RVB, moniteurs 360Hz, souris de jeu professionnelles (Logitech G Pro, Razer Viper), cartes graphiques premium (NVIDIA/AMD), ventilateurs RVB personnalisés."
-    }
-  },
-  "service": {
-    "@type": "Service",
-    "name": "Réparation PC",
-    "description": "Très rapide et fiable. Le jour même lorsque c'est possible. Diagnostic GRATUIT — sans frais si aucun problème n'est détecté. Aucun frais pour les tests supplémentaires ou le temps passé. Devis gratuits. Payez seulement si c'est réparé."
-  },
-  "uniqueSellingProposition": [
-    "Seul importateur de composants PC à Sidi Bel Abbès",
-    "Plus de 17 ans au service des clients locaux",
-    "Pièces rares en stock — pas besoin de voyager à Oran",
-    "Gamme complète d'accessoires des câbles aux souris de jeu",
-    "Pas de frais de diagnostic — jamais"
-  ]
-}
-  </script>
 <script >
     // setBasePath to tell Shoelace where to load icons from.
     import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';

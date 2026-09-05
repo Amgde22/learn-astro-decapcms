@@ -31,7 +31,7 @@ const email = footer.email
   <div class="container">
     <div class="left-section">
       <a class="logo" href="/"
-        >      <h1 class="font-logo text-center">INFO Pc SBA</h1>
+        >      <span class="logo-text font-logo text-center">INFO PC SBA</span>
 
         </a
       >
@@ -130,6 +130,15 @@ const email = footer.email
         margin: auto;
         margin-bottom: (30/16em);
         display: inline-block;
+
+        /* Keep the same visual size the old <h1> logo had */
+        .logo-text {
+          font-size: 2em;
+          font-weight: bold;
+          margin: 0;
+          display: block;
+          color: var(--headerColor);
+        }
 
         img {
           width: auto;

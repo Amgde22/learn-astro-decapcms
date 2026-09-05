@@ -1,1 +1,3 @@
-
+# Consolidate URL casing: old capitalized product URLs -> lowercase (301)
+/Produits/*  /produits/:splat  301
+/fr/Produits/*  /fr/produits/:splat  301
