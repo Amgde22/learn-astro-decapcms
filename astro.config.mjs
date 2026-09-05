@@ -11,6 +11,11 @@ export default defineConfig({
   // Only apply passthroughImageService if we are local
   image: isLocal ? { service: passthroughImageService() } : undefined,
 
+  // Dev-server only: allow proxied preview hosts (no effect on production builds)
+  server: {
+    allowedHosts: true,
+  },
+
   site: "https://www.infopc-sba.com",
 
   integrations: [

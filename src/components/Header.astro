@@ -4,7 +4,7 @@ import data from "@data/client.json";
 import { Icon } from 'astro-icon/components';
 import DarkModeToggle from "@components/DarkModeToggle.astro";
 import AmButton from "./AmButton.vue";
-import { t } from "i18n:astro";
+import { getLocalePath, t } from "i18n:astro";
 
 const {whatsappLink} = data
 const googleMapsLink = data.address.mapLink
@@ -34,7 +34,7 @@ const langName = isFrench ? "Arabic" : "Français"; // For the mobile menu text
   <div class="cs-container">
     <!--Nav Logo-->
     <a href="/" class="cs-logo" aria-label="back to home">
-      <h1 class="logo-text font-logo text-center">INFO Pc SBA</h1>
+      <span class="logo-text font-logo text-center">INFO PC SBA</span>
     </a>
 
     <AmButton href={googleMapsLink} classes="me-auto" fontSize="1.2em" collapse>
@@ -78,7 +78,7 @@ const langName = isFrench ? "Arabic" : "Français"; // For the mobile menu text
                 </button>
               ) : (
                 <a
-                  href={entry.url}
+                  href={getLocalePath(entry.url)}
                   class:list={[
                     "cs-li-link",
                     { "cs-active": Astro.url.pathname === entry.url },
@@ -123,6 +123,13 @@ const langName = isFrench ? "Arabic" : "Français"; // For the mobile menu text
 </header>
 
 <style lang="less">
+
+/* Logo is a <span> (heading hierarchy: one <h1> per page) — keep <h1> visuals */
+.cs-logo .logo-text {
+  font-size: 2em;
+  margin: 0;
+  color: var(--headerColor);
+}
 
 /*-- -------------------------- -->
 <---     Language Switcher      -->

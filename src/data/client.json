@@ -1,18 +1,30 @@
 {
-	"name": "Info Pc Sba",
+	"name": "Info PC SBA",
 	"email": "tester.infopc@gmail.com",
-	"whatsappLink":"https://wa.me/213770662425",
+	"whatsappLink": "https://wa.me/213770662425",
 
 	"phoneForTel": "0770662425",
-	"phoneFormatted": "0770662425",
-	"phoneForTel2":"0560863370",
+	"phoneFormatted": "0770 66 24 25",
+	"phoneForTel2": "0560863370",
+	"phoneE164": "+213770662425",
+	"facebookPage": "https://www.facebook.com/informatiqueelwiam/",
 	"address": {
 		"lineOne": "N 50c Cite 345 Lgt",
 		"lineTwo": "Al-wiam Sidi Jilali",
-		"city": "Sidi Bel Abbés",
+		"city": "Sidi Bel Abbès",
 		"state": "",
 		"zip": "",
-		"mapLink": "https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5"
+		"mapLink": "https://maps.app.goo.gl/ytN9YsnY5BVM4jvq5",
+		"plusCode": "696F+V7 Sidi Bel Abbès, Algeria",
+		"geo": {
+			"lat": 35.212359,
+			"lng": -0.62672
+		}
+	},
+	"openingHours": {
+		"days": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+		"opens": "08:30",
+		"closes": "20:00"
 	},
 	"domain": "www.infopc-sba.com"
 }

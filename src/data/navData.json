@@ -4,10 +4,9 @@
     "url": "/",
     "children": []
   },
-
   {
     "key": "Produits",
-    "url": "/produits/",
+    "url": "/Produits/",
     "children": []
   }
 ]

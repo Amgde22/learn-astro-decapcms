@@ -31,7 +31,7 @@ const email = footer.email
   <div class="container">
     <div class="left-section">
       <a class="logo" href="/"
-        >      <h1 class="font-logo text-center">INFO Pc SBA</h1>
+        >      <span class="font-logo text-center logo-text">INFO PC SBA</span>
 
         </a
       >
@@ -45,7 +45,7 @@ const email = footer.email
           {
             navData.map((entry) => (
               <li class="cs-li">
-                <a href={entry.url}>
+                <a href={getLocalePath(entry.url)}>
                   {t(entry.key)}
                 </a>
               </li>
@@ -396,5 +396,11 @@ const email = footer.email
 .logo{
   filter: grayscale(1) brightness(1000%);
 
+}
+/* Logo is a <span> (heading hierarchy: one <h1> per page) — keep <h1> visuals */
+.logo .logo-text {
+  font-size: 2em;
+  margin: 0;
+  color: var(--headerColor);
 }
 </style>
