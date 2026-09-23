@@ -21,15 +21,16 @@
           <img 
             loading="lazy"
               :src="mainImageSrc" 
-              :alt="name + ' image'" 
+              :alt="name ? (name + ' - Info PC SBA') : 'Product image'" 
               class="product-image"
               @error="handleImageError" 
             /> 
             <img 
               loading="lazy"
                 :src="mainImageSrc" 
-                :alt="name + ' image'" 
+                alt="" 
                 class="product-image-background"
+                aria-hidden="true"
                 @error="handleImageError" 
               /> 
 
@@ -171,8 +172,7 @@ import data from "@data/client.json"
 import Carousel from "@components/productCardMiniComponents/Carousel.vue"
 import Slider from "@components/productCardMiniComponents/Slider.vue"
 
-const googleMapsLink = data.address.mapLink
-/* ==========================================================================
+const googleMapsLink = data.address.mapLink/* ==========================================================================
    Prop Definitions
    ========================================================================== */
 
@@ -189,6 +189,11 @@ const props = defineProps({
   slider:{
     type:Boolean,
     required:false
+  },
+  // locale passed from parent so translations work during SSR
+  lang:{
+    type:String,
+    default:"ar"
   }
 });
 
@@ -196,7 +201,7 @@ const props = defineProps({
 /* ==========================================================================
    Reactive State
    ========================================================================== */
-const {t} = useT()
+const {t} = useT(undefined, props.lang)
 
 const modalVisible = ref(false);
 const isLoading = ref(!props.productImages?.image?.src);

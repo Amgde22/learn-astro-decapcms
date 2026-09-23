@@ -10,7 +10,7 @@ import landingImage from "@assets/images/hero.webp" // <-- THE PATH TO THE ASSET
 import Hero from "@components/Hero.astro";
 import Products from "@components/Products.vue";
 import '@shoelace-style/shoelace/dist/components/button/button.js';
-import { getLocalePath, t } from "i18n:astro";
+import { getLocale, getLocalePath, t } from "i18n:astro";
 
 const optimizedImage = await getOptimizedImage(landingImage)
 
@@ -73,6 +73,51 @@ async function processProductImages(products) {
 // Flag to track if data is ready
 const dataIsReady = products && productsProcessedImages;
 
+const lang = getLocale();
+
+// --- Structured data built from real content (FAQ strings + product collection) ---
+import client from "@data/client.json";
+
+const siteUrl = `https://${client.domain}`;
+
+const faqObject = t("faq", { returnObjects: true });
+const faqEntries = [
+  [faqObject.q1, faqObject.a1],
+  [faqObject.q2, faqObject.a2],
+  [faqObject.q3, faqObject.a3],
+  [faqObject.q4, `${faqObject.a4_part1}${client.phoneFormatted}${faqObject.a4_part2}${client.email}${faqObject.a4_part3}${client.address.city}`],
+  [faqObject.q5, faqObject.a5],
+];
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqEntries
+    .filter(([q, a]) => q && a)
+    .map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+};
+
+const productSchemaList = products.slice(0, 12).map((p, i) => ({
+  "@type": "Product",
+  name: p.data.name,
+  description: p.data.description?.slice(0, 300) || undefined,
+  image: productsProcessedImages[p.id]?.image?.src
+    ? `${siteUrl}${productsProcessedImages[p.id].image.src}`
+    : `${siteUrl}/assets/images/products/placeholder/logo.png`,
+  offers: {
+    "@type": "Offer",
+    price: p.data.price,
+    priceCurrency: "DZD",
+    availability: p.data.in_stock === false
+      ? "https://schema.org/OutOfStock"
+      : "https://schema.org/InStock",
+    url: `${siteUrl}${getLocalePath("/produits")}`,
+  },
+}));
+
 const pageTitle = t("home.title");
 const pageDescription = t("home.description");
 const discoverMoreText = t("home.discover_more");
@@ -95,11 +140,12 @@ const loadingProductsText = t("home.loading_products");
 <!-- products -->
 {dataIsReady ? (
   <Products 
-    client:only="vue" 
+    client:visible 
     products={products} 
     productImages={productsProcessedImages} 
     isSection={true} 
-
+    lang={lang}
+    headingLevel="h2"
   />
 ) : (
   <div class="loading-state">{loadingProductsText}</div>
@@ -129,7 +175,19 @@ const loadingProductsText = t("home.loading_products");
   <!-- ============================================ -->
   <FAQ />
 
+<!-- FAQ structured data: mirrors the visible FAQ section above -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
+<!-- Product + Offer structured data: one entry per SSR'd product -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: productSchemaList.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: p,
+  })),
+})} />
 
 </BaseLayout>
 
