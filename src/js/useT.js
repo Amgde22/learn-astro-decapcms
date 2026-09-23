@@ -3,9 +3,10 @@ import frenchLocales from "@locales/fr/common.json"
 import arabicLocales from "@locales/ar/common.json"
 
 export default function useT(defaultKey,lang){
+    // SSR-safe: default to Arabic (the site's default locale) when no lang is passed;
+    // reading document during setup crashes Astro server rendering.
     const currentLang = ref(
-        lang ??
-        document.documentElement.getAttribute("dir") == "rtl"?"ar":"fr"
+        lang ?? "ar"
         )
     const currentLocale = computed(()=>{
         switch (currentLang.value) {

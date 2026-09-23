@@ -19,13 +19,11 @@ export default defineConfig({
       i18n: {
         defaultLocale: 'ar',
         locales: {
-          ar: 'ar-DZ',
-          fr: 'fr-FR',
+          ar: 'ar',
+          fr: 'fr',
         },
       },
-      filter: (page) => !page.includes("/admin"),
-      changefreq: "weekly",
-      priority: 0.7,
+      filter: (page) => !page.includes("/admin") && !page.includes("/404"),
     }),
     i18n({
       defaultLocale: "ar",

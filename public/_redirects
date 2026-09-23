@@ -1,1 +1,8 @@
+# Redirects for legacy URLs (301 = permanent, passes SEO signals)
 
+# Route renamed from /Produits to /produits
+/Produits        /produits/        301!
+/Produits/       /produits/        301!
+
+# Legacy hosting domain (site moved to https://www.infopc-sba.com)
+https://infopc.netlify.app/*    https://www.infopc-sba.com/:splat    301!

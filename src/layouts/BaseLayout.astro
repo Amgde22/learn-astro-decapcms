@@ -11,7 +11,8 @@ import "@styles/scrollbar.less";
 
 import I18nClient from "@astrolicious/i18n/components/I18nClient.astro";
 import I18nHead from "@astrolicious/i18n/components/I18nHead.astro";
-import { getHtmlAttrs, getLocales, t } from "i18n:astro";
+import { getHtmlAttrs, getDefaultLocale, getSwitcherData, t } from "i18n:astro";
+import { getLocale } from "i18n:astro";
 
 // shoelace style
 import "@shoelace-style/shoelace/dist/themes/light.css";
@@ -34,13 +35,15 @@ const { description, title, preloadedImage } = Astro.props;
             <I18nClient />
             <!-- Standard meta tags -->
             <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content={description}>
-            <meta name="keywords" content="">
             <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
+            <meta name="robots" content="index, follow">
 
 		<I18nHead />
+
+            <!-- x-default hreflang: point search engines at the default-locale (ar) version -->
+            <link rel="alternate" hreflang="x-default" href={`https://${client.domain}${getSwitcherData().find(l => l.locale === getDefaultLocale())?.href ?? "/"}`}>
 
             <!-- Preloads the image passed as a prop -->
             <link rel="preload" href={preloadedImage.src} as="image" />
@@ -49,9 +52,17 @@ const { description, title, preloadedImage } = Astro.props;
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
+            <meta property="og:site_name" content={client.name} />
+            <meta property="og:locale" content={getLocale() === "ar" ? "ar_DZ" : "fr_FR"} />
+            <meta property="og:locale:alternate" content={getLocale() === "ar" ? "fr_FR" : "ar_DZ"} />
             <meta property="og:url" content={`https://${client.domain}${Astro.url.pathname}`} />
-            <meta property="og:image" content="assets/images/products/placeholder/logo.png" />
-            <meta property="og:image:secure_url" content="assets/images/products/placeholder/logo.png" />
+            <meta property="og:image" content={`https://${client.domain}/assets/images/products/placeholder/logo.png`} />
+            <meta property="og:image:secure_url" content={`https://${client.domain}/assets/images/products/placeholder/logo.png`} />
+            <meta property="og:image:alt" content={client.name} />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content={`https://${client.domain}/assets/images/products/placeholder/logo.png`} />
     
             <!--Favicons-->
             <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
@@ -59,7 +70,7 @@ const { description, title, preloadedImage } = Astro.props;
             <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
             <link rel="manifest" href="/assets/favicons/site.webmanifest">
             <meta name="msapplication-TileColor" content="#da532c">
-            <meta name="theme-color" content="#8ddaf9">
+            <meta name="theme-color" content="#00a8eb">
          
             <!--For home page, use service keywords for the title, including location for SEO.
             Other pages should just include the page name.
@@ -68,18 +79,7 @@ const { description, title, preloadedImage } = Astro.props;
             Home page - House Painting Contractors | Painters and Co. | TestCity, WA
             About Page - About us | Painters and Co.
             -->
-            <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
-            }
-            </title>
+            <title>{Astro.url.pathname === "/" ? `${title} | ${client.name} | ${client.address.city}` : `${title} | ${client.name}`}</title>
 
             <!-- Sitewide Scripts -->
            <script src="@js/nav.js"></script>
@@ -124,9 +124,13 @@ src="https://www.facebook.com/tr?id=1376904244235037&ev=PageView&noscript=1"
   {
   "@context": "https://schema.org",
   "@type": "ComputerStore",
-  "name": "Votre Magasin de PC",
+  "name": "Info Pc Sba",
+  "url": "https://www.infopc-sba.com",
+  "telephone": "+213770662425",
+  "image": "https://www.infopc-sba.com/assets/images/products/placeholder/logo.png",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "N 50c Cite 345 Lgt, Al-wiam Sidi Jilali",
     "addressLocality": "Sidi Bel Abbès",
     "addressCountry": "DZ"
   },

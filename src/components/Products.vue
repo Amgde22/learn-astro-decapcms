@@ -1,11 +1,11 @@
 <template>
-        <h1 class="title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+        <component :is="headingLevel" class="title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill="currentColor" d="M20 6H4V4h16zm-4.31 8H14v1.69c-.63.95-1 2.08-1 3.31c0 .34.04.67.09 1H4v-6H3v-2l1-5h16l1 5v1.35c-.63-.22-1.3-.35-2-.35c-1.23 0-2.36.37-3.31 1M12 14H6v4h6zm9.34 1.84l-3.59 3.59l-1.59-1.59L15 19l2.75 3l4.75-4.75z" />
             </svg>
             {{ title }} 
         
-        </h1>
+        </component>
 
         <SelectNav :items="tags" select-all-label="tout"
         @select="e => {selectedTag = e}" />
@@ -24,6 +24,7 @@
             :key="product.id"
             :product="product"
             :product-images="productImages[product.id]"
+            :lang="lang"
         />
 
 
@@ -48,14 +49,29 @@
         productImages:{
             type:Object
         },
+        // locale passed from Astro (i18n:astro getLocale) so translations work during SSR
+        lang:{
+            type:String,
+            default:"ar"
+        },
+        // heading level for the section title: h1 on /produits (page heading), h2 on home (section)
+        headingLevel:{
+            type:String,
+            default:"h1"
+        }
 
     })
-    const {t} = useT()
+    const {t} = useT(undefined, props.lang)
 
-    const title = t("products.heading")
+    const title = computed(()=> t("products.heading"))
 
     const tags = getAllTags()
     const selectedTag = ref("")
+
+    // viewport-based product limit is a progressive enhancement:
+    // SSR renders ALL products (good for SEO), hydration re-slices on mount.
+    const isMounted = ref(false)
+    onMounted(()=>{ isMounted.value = true })
 
     // computed
     const filteredProducts = computed(()=>{
@@ -64,7 +80,6 @@
         if ( Tag == "")  return props.products
         // else filter by taf
         const filtered = props.products.filter(entry => entry.data.tags && entry.data.tags.includes(Tag))
-        console.log(filtered);
         return filtered
     })
 
@@ -73,6 +88,9 @@
         const products = toValue(filteredProducts) ?? []
 
         if (props.isSection == false) return products
+
+        // During SSR (and pre-hydration) show all products so crawlers see the full catalog.
+        if (!isMounted.value) return products
 
         const breakPoint1 = 550
         const breakPoint2 = 800
